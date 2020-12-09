@@ -5,7 +5,7 @@
 <li>Add test axios get request <span class="badge badge-secondary">Done</span></li>
 <li>Setup vuex <span class="badge badge-secondary">Done</span></li>
 <li>Test plot with plotly <span class="badge badge-secondary">Done</span></li>
-<li>Test get request CORS against varbrowser</li>
+<li>Test get request CORS against varbrowser <span class="badge badge-secondary">Done</span></li>
 <li>Get request into vuex store</li>
 <li>Json from request into datatable</li>
 <li>Json from request into plotly</li>
