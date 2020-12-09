@@ -1,11 +1,8 @@
 <template>
   <div id="app">
     <simple-component/>
-
-    <p>Test adding interactive plot from vue-plotly</p>
     <datatable/>
     <plot-component/>
-   
   </div>
 </template>
 

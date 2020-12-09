@@ -1,5 +1,6 @@
 <template>
   <div>
+      <hr>
     <Plotly v-if="loaded" :data="data" :layout="layout" :display-mode-bar="false" />
   </div>
 </template>
@@ -17,7 +18,7 @@ export default {
                 y: [10,15,13,17],
                 type:"scatter"}],
                 layout: {
-                title: "Testing to plot",
+                title: "Testing to plot with vue-plotly",
                 autosize: false, 
                 width:750
             }

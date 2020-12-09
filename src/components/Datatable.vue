@@ -1,9 +1,11 @@
 <template>
  <div id="app" class="container">
+    <h4>Test adding datatable from bootstrap </h4>
   <b-table striped hover outlined :items="posts"></b-table>
-  <p>https://medium.com/swlh/vuejs-datatables-the-easy-options-a204600ea53d</p>
+  <a href="https://medium.com/swlh/vuejs-datatables-the-easy-options-a204600ea53d"> link to datatable tutorial</a>
  </div>
 </template>
+
 <script>
  export default {
   name: "datatable",
