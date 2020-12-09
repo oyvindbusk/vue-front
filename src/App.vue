@@ -1,16 +1,26 @@
 <template>
   <div id="app">
     <simple-component/>
+
+    <p>Test adding interactive plot from vue-plotly</p>
+    <datatable/>
+    <plot-component/>
+   
   </div>
 </template>
 
 <script>
 import SimpleComponent from './components/SimpleComponent.vue';
+import Datatable from './components/Datatable.vue';
+import PlotComponent from './components/PlotComponent.vue';
+
 
 export default {
   name: 'App',
   components: {
-    SimpleComponent
+    SimpleComponent,
+    Datatable,
+    PlotComponent
   }
   }
 </script>

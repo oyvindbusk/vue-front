@@ -10,6 +10,9 @@
           {{ user.name }}
         </li>
         <p>Test GET request via axios</p>
+
+
+        <p>Test adding datatable from </p>
         
 
 </div>
@@ -27,7 +30,7 @@
     },
     data() {
       return {
-        users: []
+        users: [],
       };
     },
     methods: {
@@ -44,8 +47,6 @@
         decreaseAppCounter: function() {
           this.$store.dispatch(ACTION_APP_DECREMENT)
         }
-
-
     }
   };
 </script>
