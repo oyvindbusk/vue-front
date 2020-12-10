@@ -1,0 +1,76 @@
+#? stdtmpl | standard
+#proc genModal(sID: string): string =
+# result = ""
+<div class="modal" tabindex="-1" role="dialog" id="reportModal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          Report for sample:
+          {{ sampleID }}
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <div class="modal-body">
+        
+      <div class="jumbotron">
+        <div class="container-fluid" id="reportTarget">
+          <div class="row justify-content-md-center">
+                <h2>
+                    Report for sample:  {{ sampleID }}
+                </h2>
+                <br>
+          </div>
+      <div class="col-md-12">
+        <br>
+        <p style="font-weight: bold;">Variants: </p>
+
+        
+        <!-- interpedVars contains 
+
+          
+        positionID, varclass, usr, comment, date:
+
+
+        -->
+        <ul>
+          <div v-if="Object.keys(interpdVars).length === 0">No variants are reviewed!</div>
+          <li v-for="(value, name) in interpdVars">Gene: <strong>{{ value.gene }}</strong> Class: <strong>{{ value.varclass  }}</strong>, Comment: <strong>{{ value.comment }}</strong></li>
+        </ul>  
+
+      
+
+
+        <br>
+        <p style="font-weight: bold;">Comment: </p><p> {{ sessionComment }} </p>
+        <br>
+        
+        <p style="font-weight: bold;">Filters used in analysis: </p>
+        <ul>
+          <div v-if="Object.keys(filters).length === 0">No filters applied!</div>
+          <li v-for="(value, name) in filters">test</strong></li>
+          
+          <li>Chr Equal to 1</li>
+          <li>gnomad NFE Less than 0.1</li>
+          <li>annotation Contains coding</li>
+          <li>These are also examples pending implementation</li>
+        </ul>
+        
+        </div>    
+        </div>
+      </div>
+      <p id="userParagraph" style="font-size: 1.5em;">User: {{ usr }} Date: {{ date }} </p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="javascript:genPDF();">Save to PDF</a></button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+#end proc

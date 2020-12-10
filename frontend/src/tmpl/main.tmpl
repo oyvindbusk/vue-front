@@ -1,0 +1,78 @@
+#? stdtmpl | standard
+#proc genCSS(): string =
+# result = ""
+<head>
+<!-- CSS & JS:  -->
+<!-- Default stylesheet -->
+<link rel="stylesheet" href="/css/style.css">
+<!-- igv js -->
+<script type="application/javascript" src="/igv/igv.min.js"></script>
+<script type="application/text/css" src="/igv/igv.css"></script>
+<!-- Jquery -->
+<script src="/js/jquery-3.4.1.min.js"></script>
+<!-- Bootstrap -->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap js -->
+<script src="/js/bootstrap.min.js"></script>
+<!-- Datatables -->
+<link rel="stylesheet" type="text/css" href="/DataTables/datatables.min.css"/> 
+<script type="text/javascript" src="/DataTables/datatables.min.js"></script>
+<!-- Custom js -->
+<script type="text/javascript" src="/js/vb_frontend_funcs.js"></script>
+<!-- End  -->
+</head>
+#end proc
+#proc navBar(c: var TData): string =
+# result = ""
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+   <a class="navbar-brand" href="#">Variant browser</a>
+   <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar"
+       aria-expanded="false" aria-controls="navbarNav" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+     </button>
+</nav>
+#end proc
+#proc genMain(c: var TData): string =
+# result = ""
+# result.add(genCSS())
+<body>
+# result.add(navBar(c))
+<div class="jumbotron">
+  <div class="container">
+    <h1>Intervar app</h1>
+    <p>An app for storing NGS-interpretations!</p>
+    <p>The "home" page can also serve as a dashboard-page showing div plots etc </p>
+  </div>
+</div>
+<div class="container">
+  <h3>More info here:</h3>
+  <p>Made in the epicenter of change!</p>
+</div>
+</body>
+#end proc
+#
+#proc genSelSample(c: var TData): string =
+# result = ""
+# result.add(genCSS())
+<body>
+# result.add(navBar(c))
+<div class="jumbotron">
+  <div class="container">
+    <h1>Samples for interpretation</h1>
+    <table id="samples" class="display" style="width:100%">
+      <thead>
+        <tr>
+          <th>Sample_ID</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+    <button id="interpretButton" type="button" class="btn btn-primary">Interpret</button>
+  </div>
+</div>
+<!-- Custom js -->
+<script type="text/javascript" src="/js/mainView.js"></script>
+<!-- End  -->
+</body>
+#end proc

@@ -1,0 +1,184 @@
+#? stdtmpl | standard
+#proc genVariants(c: var TData): string =
+# result = ""
+# result.add(genCSS())
+<body>
+# result.add(navBar(c))
+<div class="jumbotron" id="app">
+    <div class="container-fluid">
+        <div class="row justify-content-md-center">
+            <h1>
+                All Variants - All samples
+            </h1>
+        </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <table id="allVariants" class="display" style="width:100%" v-on:click="tableClickUpdate">
+                <thead>
+                    <tr>
+                        <th>chr</th>
+                        <th>pos</th>
+                        <th>ref</th>
+                        <th>alt</th>
+                        <th>hGVSc</th>
+                        <th>hGVSp</th>
+                        <th>Het count</th>
+                        <th>Hom count</th>
+                        <th>Status</th>
+                        <th>Annotation</th>
+                        <th>geneID</th>
+                        <th>featureType</th>
+                        <th>featureID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow-sm" id="filterCard">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Filters: </h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="container container-fluid">
+                            <h4 class="mb-3">add/remove filters</h4>
+                            <div class='element' id='div_1'>
+                                <div class='input-group mb-3'>
+                                    <input class='form-check-input' type='checkbox' value='' id='check_1'><label
+                                        class='form-check-label' for='check_1'>Keep if missing</label>&nbsp;
+                                        <select class="custom-select d-block w-100 col-md-2" id="selop_1">
+                                            <option value="">Choose...</option>
+                                            <option>Equal to</option>
+                                            <option>Not equal to</option>
+                                            <option>Starts with</option>
+                                            <option>Does not starts with</option>
+                                            <option>Contains</option>
+                                            <option>Does not contain</option>
+                                            <option>Greater than</option>
+                                            <option>Less than</option>
+                                        </select>
+                                    <select class="custom-select d-block w-100 col-md-2" id="selcol_1">
+                                        <option value="">Choose...</option>
+                                    </select>
+                                    <input type='text' placeholder='Value' class='form-control' id='txt_1'>&nbsp;&nbsp;<span class='add col-md-1'>+</span>
+                                </div>
+                            </div>
+
+                            <div class='element' id='div_2'>
+                                <div class='input-group mb-3'>
+                                    <input class='form-check-input' type='checkbox' value='' id='check_2'><label
+                                        class='form-check-label' for='check_2'>Keep if missing</label>&nbsp;
+                                        <select class="custom-select d-block w-100 col-md-2" id="selop_2">
+                                            <option value="">Choose...</option>
+                                            <option>Equal to</option>
+                                            <option>Not equal to</option>
+                                            <option>Starts with</option>
+                                            <option>Does not starts with</option>
+                                            <option>Contains</option>
+                                            <option>Does not contain</option>
+                                            <option>Greater than</option>
+                                            <option>Less than</option>
+                                        </select>
+                                        <select class="custom-select d-block w-100 col-md-2" id="selcol_2">
+                                            <option value="">Choose...</option>
+                                        </select>
+                                    <input type='text' placeholder='Value' class='form-control' id='txt_2'>&nbsp;&nbsp;<span class='col-md-1'></span>
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn-primary" id="toConsole">Apply filters</button>  <button type="button" class="btn btn-primary" id="resetFilters">Reset filters</button>  <button type="button" class="btn btn-primary" v-on:click="loadAllVars">Load All!</button>
+                            <br>
+
+                            <h1 class="card-title pricing-card-title">Active <small class="text-muted">filters</small></h1>
+                            <ul class="list-unstyled mt-3 mb-6" id="card_1">
+                            <li id="filterLi">No filters applied</li>
+                            </ul>
+                    
+                            
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="card shadow-sm">
+                <div class="card">
+                    <div class="card-header">
+                         <h4 class="my-0 font-weight-normal">Variant info: </h4>
+                    </div>
+                    <div id="variant_card_collapsed" class="card-body collapse">
+                        
+                        <h5 class="card-title">Variant info:</h5>
+                        <p class="card-text">PositionID: <strong>{{ positionID }} </strong> hGVSc: <strong> {{ hGVSc }} </strong> hGVSp: <strong> {{ hGVSp }} </strong></p>
+                        <br>
+                        
+                        <h5 class="card-title">Annotation:</h5>
+                        <p class="card-text">Gene: <strong>{{ gene }} </strong>Annotation: <strong> {{ annotation }} </strong> impact: <strong> {{ impact }} </strong> Feature type: <strong> {{ feature_type }} </strong></p>
+                       
+                        
+
+
+
+                        <br>
+                        
+                        
+                        
+                        <h5 class="card-title">Samples containing this variant:</h5>
+                        <section>
+                        <ul id="example-1">
+                            <li v-for="sample in samples" :key="sample.info">
+                            {{ sample.info }}
+                            </li>
+                        </ul>
+                        </section>
+                        <br>
+
+                        <form method="POST" enctype="multipart/form-data">
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    <label for="sel1">Class:</label>
+                                    <select class="form-control" id="sel1" v-model="masterClass" @change="onchange()">
+                                        <option>0</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>U</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <fieldset class="form-group">
+                                <label for="variant comments">Comments</label>
+                                <textarea class="form-control" id="varComments" spellcheck="false" v-model="masterComment" @input="onchange()"></textarea>
+                            </fieldset>
+                        </form>
+                        <button type="button" class="btn btn-primary" id="saveStandaloneVarInterpButton" v-on:click="postData">Save interpretation</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+<p>Date: {{ date }} </p>
+
+    </div>
+</div>
+
+</div>
+<div id="hiddenuser" hidden>
+# result.add(c.username)
+</div>
+<script type="text/javascript" src="/vue/vue.js"></script>
+<script type="text/javascript" src="/js/variantsView.js"></script>
+<script type="text/javascript" src="/js/variantsViewVue.js"></script>
+<script type="text/javascript" src="/axios/axios.min.js"></script>
+</body>
+#end proc

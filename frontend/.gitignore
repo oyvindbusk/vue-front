@@ -1,0 +1,12 @@
+.DS_Store
+main
+data/users.db
+vb_frontend
+testdir/testGetTableFields
+db/*
+testdir/Bundesliga.csv
+testdir/Bundesliga.csv.html
+testdir/nimdatatest*
+testdir/testpostgres
+testdir/testpostgres.nim
+.minio*

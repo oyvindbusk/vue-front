@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Error><Code>NoSuchBucket</Code><Message>The specified bucket does not exist</Message><Key>bam</Key><BucketName>variants7_50</BucketName><Resource>/variants7_50/bam</Resource><RequestId>160E0281EC0F09C1</RequestId><HostId>d44574b4-a1c0-4894-a2b5-4190757b7e2e</HostId></Error>
