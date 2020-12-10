@@ -11,7 +11,7 @@
 <li>Json from request into plotly</li>
 <li>Routing to another page</li>
 <li>User auth</li>
-<li>Make navbar</li>
+<li>Make navbar <span class="badge badge-secondary">Done</span></li>
 <li>Adding filter, search, select, sort and export to table</li>
 <li>Add open modal on click of table</li>
 <br>

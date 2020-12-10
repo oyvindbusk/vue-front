@@ -1,10 +1,10 @@
 <template>
   <div id="app">
+    <navbar/>
     <simple-component/>
     <datatable/>
     <plot-component/>
     <hr>
-    <req-var/>
   </div>
 </template>
 
@@ -12,7 +12,8 @@
 import SimpleComponent from './components/SimpleComponent.vue';
 import Datatable from './components/Datatable.vue';
 import PlotComponent from './components/PlotComponent.vue';
-import ReqVar from './components/ReqVar.vue';
+// import ReqVar from './components/ReqVar.vue';
+import Navbar from './components/Navbar.vue';
 
 
 export default {
@@ -21,7 +22,7 @@ export default {
     SimpleComponent,
     Datatable,
     PlotComponent,
-    ReqVar
+    Navbar
   }
   }
 </script>
