@@ -57,11 +57,11 @@ export default {
     methods: {
         checkLoggedIn: function () {
             //this.$store.dispatch('ActionGetLoggedStatus')
-            //const baseURI = 'http://localhost:5001/chklogin'
-            const baseURI = 'https://jsonplaceholder.typicode.com/todos/1'
+            const baseURI = 'http://localhost:5001/chklogin'
+            //const baseURI = 'https://jsonplaceholder.typicode.com/todos/1'
             this.$http.get(baseURI, {withCredentials: true})
             .then(response => response.data)
-            .then(data => this.loggedInStatus = data)
+            .then(data => this.loggedInStatus = data.logstatus)
             console.log(this.appConfig.someOtherProps)
 
             

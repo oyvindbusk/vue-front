@@ -10,10 +10,8 @@
                     <br/>
                     <label for="defaultFormLoginPasswordEx" class="grey-text">Your password</label>
                     <input name="password" type="password" class="form-control input is-rounded" dir="auto" value="Pass" />
-    
                     <div class="text-center mt-4">
-                        
-                        <button class="w-100 btn btn-lg btn-primary" type="submit" value="Login">Sign in</button>
+                        <!-- <button class="w-100 btn btn-lg btn-primary" type="submit" value="Login">Sign in</button> -->
                     </div>
                 </form>
             </div>
