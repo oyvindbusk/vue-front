@@ -9,6 +9,10 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import router from './router'
 
+// Import config. Can be used like this: this.appConfig.$api_url in any module
+import { config } from './config';
+
+Vue.prototype.appConfig = config
 
 
 // Install BootstrapVue
@@ -20,5 +24,5 @@ Vue.prototype.$http = axios
 new Vue({
   router,
   render: h => h(App),
-  store
+  store: store,
 }).$mount('#app')

@@ -3,16 +3,20 @@
         <h1>Home</h1>
         <p>Import everything here</p>
         <p>
-            Automatically check if logged in, then reroute to login.
+            Automatically check if logged in, then reroute to login.<br>
+            This site should check if logged in on site load, and only show login options if not logged in. <br>
+            When logged in a table with the samples available for interp should be shown.
         </p>
+        <br><br><br><br><br><br><br>
         <hr>
-        <!-- <b-button variant="success" v-on:click="checkLoggedIn">Logged in?</b-button> -->
+        <b-button variant="success" v-on:click="checkLoggedIn">Logged in?</b-button>
         <hr>
         <span v-html="loggedInStatus"></span>
         <login v-show="!loggedInStatus"/>
+        <h1>{{products.userId}}</h1>
         <hr>
         <h3>TODOLIST:</h3>
-        <li>Get request into vuex store</li>
+        <li>Get request into vuex store <span class="badge badge-secondary">Done</span></li>
         <li>Json from request into datatable</li>
         <li>Json from request into plotly</li>
         <li>Adding filter, search, select, sort and export to table</li>
@@ -37,29 +41,36 @@ export default {
     components: {
         Login
     },
-    computed: {
-        loggedInStatus: function() {
-        return this.$store.getters.getLoggedInStatus
-    }
+    data() {
+        return {
+            loggedInStatus: ""
+        }
     },
-    // mounted () {
-    //     this.$store.dispatch('ActionGetLoggedStatus')
-    // }
-    // methods: {
-    //     checkLoggedIn: function () {
-    //         //this.$store.dispatch('ActionGetLoggedStatus')
-    //         const baseURI = 'http://localhost:5001/chklogin'
-    //         this.$http.get(baseURI, {withCredentials: true})
-    //             .then((result) => {
-    //                 console.log(result.data)
-    //                 this.loggedInStatus = Boolean(result.data)
-    //             })        
-    //         }
-        
-     
-    // }
+    computed: {
+        products() {
+            return this.$store.getters.products;
+        }
+    },
+    created: function() {
+        this.$store.dispatch('initStore')
+    },
+    methods: {
+        checkLoggedIn: function () {
+            //this.$store.dispatch('ActionGetLoggedStatus')
+            //const baseURI = 'http://localhost:5001/chklogin'
+            const baseURI = 'https://jsonplaceholder.typicode.com/todos/1'
+            this.$http.get(baseURI, {withCredentials: true})
+            .then(response => response.data)
+            .then(data => this.loggedInStatus = data)
+            console.log(this.appConfig.someOtherProps)
 
+            
+            }
+    }
 }
+
+
+
 </script>
 <style lang="scss" scoped>
 </style>

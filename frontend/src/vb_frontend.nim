@@ -248,9 +248,9 @@ routes:
     createTFD()
     echo c.loggedIn
     if c.loggedIn:
-      resp(Http200, {"Access-Control-Allow-Origin" : "http://localhost:8080", "Access-Control-Allow-Credentials": "true" }, "true")
+      resp(Http200, {"Access-Control-Allow-Origin" : "http://localhost:8080", "Access-Control-Allow-Credentials": "true" }, """{"loginstatus": "true"}""")
     else:
-      resp(Http200, {"Access-Control-Allow-Origin" : "http://localhost:8080", "Access-Control-Allow-Credentials": "true" }, "false")
+      resp(Http200, {"Access-Control-Allow-Origin" : "http://localhost:8080", "Access-Control-Allow-Credentials": "true" }, """{"loginstatus": "false"}""")
 
 
 

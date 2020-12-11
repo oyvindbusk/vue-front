@@ -1,62 +1,53 @@
-// define app store actions names
-export const ACTION_APP_INCREMENT = 'ActionAppIncrement'
-export const ACTION_APP_DECREMENT = 'ActionAppDecrement'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
+Vue.use(Vuex);
+
+// define app store actions names
+export const ACTION_APP_INCREMENT = 'ActionAppIncrement';
+export const ACTION_APP_DECREMENT = 'ActionAppDecrement';
 
 // define app store mutations names
-const INCREMENT_VALUE = 'IncrementValue'
-const DECREMENT_VALUE = 'DecrementValue'
+const INCREMENT_VALUE = 'IncrementValue';
+const DECREMENT_VALUE = 'DecrementValue';
 
 // initial app state
 const state = {
-  counter: 0,
-  loggedInStatus: false
-}
+	counter: 0
+};
 
 const getters = {
-  getCounter (state) {
-    return state.counter
-  },
-  getLoggedInStatus (state) {
-    return state.loggedInStatus
-  }
-}
+	getCounter(state) {
+		return state.counter;
+	}
+};
 
 // app store actions
 const actions = {
-  [ACTION_APP_INCREMENT] (context) {
-    context.commit(INCREMENT_VALUE);
-  },
-  [ACTION_APP_DECREMENT] (context) {
-    context.commit(DECREMENT_VALUE);
-  },
-  ActionGetLoggedStatus({ commit }) {
-    const baseURI = 'http//localhost:5001/chklogin'
-    this.$http.get(baseURI, {withCredentials: true})
-    .then(result => {
-      commit('SET_LOGGED', Boolean(result.data))
-    })    
-  }
-}
+	[ACTION_APP_INCREMENT](context) {
+		context.commit(INCREMENT_VALUE);
+	},
+	[ACTION_APP_DECREMENT](context) {
+		context.commit(DECREMENT_VALUE);
+	}
+};
+//
 
 // app store mutations
 const mutations = {
-  [INCREMENT_VALUE] (state) {
-    state.counter = state.counter + 1
-    console.log('New counter value: '+ state.counter)
-  },
-  [DECREMENT_VALUE] (state) {
-    state.counter = state.counter -1
-    console.log('New counter value: '+ state.counter)
-  },
-    SET_LOGGED (state, loggedInStatus) {
-    state.loggedInStatus = loggedInStatus
-  }
-}
+	[INCREMENT_VALUE](state) {
+		state.counter = state.counter + 1;
+		console.log('New counter value: ' + state.counter);
+	},
+	[DECREMENT_VALUE](state) {
+		state.counter = state.counter - 1;
+		console.log('New counter value: ' + state.counter);
+	}
+};
 
 export default {
-  state,
-  actions,
-  mutations,
-  getters
-}
+	state,
+	actions,
+	mutations,
+	getters
+};
