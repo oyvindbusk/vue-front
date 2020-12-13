@@ -9,15 +9,31 @@
         </p>
         <br><br><br><br><br><br><br>
         <hr>
+        <p>Code routing: method section -> this.$router.push({name: nameofroute, })</p>
         <b-button variant="success" v-on:click="checkLoggedIn">Logged in?</b-button>
         <hr>
         <span v-html="loggedInStatus"></span>
         <login v-show="!loggedInStatus"/>
         <h1>{{products.userId}}</h1>
         <hr>
+        <b-button variant="success" v-on:click="getSamples">samples</b-button>
+        <h1>{{samples.items}}</h1>
+        <b-table selectable select-mode="single" @row-selected="rowSelected" striped hover outlined :items="items" :small="small" :fields="fields"></b-table>
+        {{selectedItems}}
+        <hr>
+        <p>
+        Reroute to A new view with sample id as parameter
+        </p>
+        
+        <hr>
+        <!-- <b-button variant="success" v-on:click="getVariants">Variants</b-button>
+        <h1>{{variants}}</h1> -->
+        <hr>
         <h3>TODOLIST:</h3>
         <li>Get request into vuex store <span class="badge badge-secondary">Done</span></li>
         <li>Json from request into datatable</li>
+        <li>Importer en metode fra en mixin</li>
+        <li>Lag og test ett filter</li>
         <li>Json from request into plotly</li>
         <li>Adding filter, search, select, sort and export to table</li>
         <li>Add open modal on click of table</li>
@@ -43,7 +59,23 @@ export default {
     },
     data() {
         return {
-            loggedInStatus: ""
+            items: [],
+            selectedItems: [],
+            
+            loggedInStatus: "",
+            samples: "",
+            fields: [
+          {
+            key: 'sampleID',
+            label: 'Sample ID',
+            sortable: true
+          },
+          {
+            key: 'panel',
+            sortable: true
+          },
+        ],
+        small: true,
         }
     },
     computed: {
@@ -52,7 +84,8 @@ export default {
         }
     },
     created: function() {
-        this.$store.dispatch('initStore')
+        this.$store.dispatch('initStore'),
+        this.getSamples()
     },
     methods: {
         checkLoggedIn: function () {
@@ -63,9 +96,30 @@ export default {
             .then(response => response.data)
             .then(data => this.loggedInStatus = data.logstatus)
             console.log(this.appConfig.someOtherProps)
+            },
+        getSamples: function () {
+            //this.$store.dispatch('ActionGetLoggedStatus')
+            const baseURI = 'http://localhost:5001/newsamples'
+            //const baseURI = 'https://jsonplaceholder.typicode.com/todos/1'
+            this.$http.get(baseURI, {withCredentials: true})
+            .then(response => response.data)
+            .then(data => this.items = data.items)
+        },
+        getVariants: function () {
+            //this.$store.dispatch('ActionGetLoggedStatus')
+            const baseURI = 'http://localhost:5001/newVariants'
+            //const baseURI = 'https://jsonplaceholder.typicode.com/todos/1'
+            this.$http.get(baseURI, {withCredentials: true})
+            .then(response => response.data)
+            .then(data => this.samples = data)
+        },
+        // To get selected items in table
+        rowSelected(items) {
+        this.selectedItems = items
+      },
+    },
+    watch: {
 
-            
-            }
     }
 }
 
@@ -74,3 +128,4 @@ export default {
 </script>
 <style lang="scss" scoped>
 </style>
+

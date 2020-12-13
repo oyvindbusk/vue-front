@@ -403,3 +403,22 @@ routes:
     createTFD()
     if c.loggedIn:
       resp genStats(c)
+
+  get "/newsamples":
+    # Query backend api for the samples:
+    let sample_ids = parseJson("""{"items": [{"sampleID": "763_20", "panel": "ALS"},
+    {"sampleID": "591_20", "panel": "CMT"}]}""")
+    resp(Http200, {"Access-Control-Allow-Origin" : "http://localhost:8080", "Access-Control-Allow-Credentials": "true" }, $(sample_ids))
+  
+# items: [
+#           { isActive: true, age: 40, first_name: 'Dickerson', last_name: 'Macdonald' },
+#           { isActive: false, age: 21, first_name: 'Larsen', last_name: 'Shaw' },
+#           { isActive: false, age: 89, first_name: 'Geneva', last_name: 'Wilson' },
+#           { isActive: true, age: 38, first_name: 'Jami', last_name: 'Carney' }
+#         ],
+
+
+  get "/newVariants":
+    # Query backend api for the samples:
+    let variants = parseJson("""{"key": 3.14}""")
+    resp(Http200, {"Access-Control-Allow-Origin" : "http://localhost:8080", "Access-Control-Allow-Credentials": "true" }, $(variants))
