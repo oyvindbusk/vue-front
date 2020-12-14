@@ -14,6 +14,8 @@
 </template>
 
 <script>
+import { config } from '../config.js'
+
 
 export default {
   data() {
@@ -40,13 +42,11 @@ export default {
     methods: { 
         getSamples: function () {
             //this.$store.dispatch('ActionGetLoggedStatus')
-            const baseURI = 'http://localhost:5001/newsamples'
-            //const baseURI = 'https://jsonplaceholder.typicode.com/todos/1'
+            const baseURI = config.$backend_url+'/newsamples'
             this.$http.get(baseURI, {withCredentials: true})
             .then(response => response.data)
             .then(data => {
                 this.items = data.items;
-                console.log("test")
             })
         },
         // To get selected items in table - this should be added as a mixin
@@ -58,8 +58,6 @@ export default {
             selectedSample: function (val) {
                 console.log(val)
                 this.$router.push({name: 'Variants', params: {id: this.selectedSample}})
-
     }}
-    
 }
 </script>
