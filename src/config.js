@@ -2,7 +2,7 @@ let config;
 
 config = {
 	$api_url: 'http://0.0.0.0:5001',
-	$backend_url: 'http://172.16.0.3:5001',
+	$backend_url: 'http://localhost:5001',
 	timeoutDuration: 1000,
 	someOtherProps: 'abc',
 	filteroptions: [
@@ -13,7 +13,7 @@ config = {
 		{ value: 'nsw', text: 'Does not starts with' },
 		{ value: 'c', text: 'Contains' },
 		{ value: 'lt', text: 'Less than' },
-		{ value: 'gt', text: 'Greater than' },
+		{ value: 'gt', text: 'Greater than' }
 	],
 	columnoptions: [
 		{ value: null, text: 'Please select a column' },
@@ -25,27 +25,36 @@ config = {
 	],
 	vartablefields: [
 		{
-			key: "chr",
-			label: "Chromosome",
-			sortable: true,
+			key: 'chr',
+			label: 'Chromosome',
+			sortable: true
 		},
 		{
-			key: "pos",
-			label: "Position",
-			sortable: true,
+			key: 'pos',
+			label: 'Position',
+			sortable: true
 		},
 		{
-			key: "ref",
-			label: "Ref Allele",
-			sortable: true,
+			key: 'ref',
+			label: 'Ref Allele',
+			sortable: true
 		},
 		{
-			key: "alt",
-			label: "Alt Allele",
-			sortable: true,
+			key: 'alt',
+			label: 'Alt Allele',
+			sortable: true
 		},
-	],
-
+		{
+			key: 'HGMD',
+			label: 'HGMD',
+			sortable: true
+		},
+		{
+			key: 'actions',
+			label: 'actions',
+			sortable: true
+		}
+	]
 };
 
 export { config };

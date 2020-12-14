@@ -1,18 +1,14 @@
   <template>
   <div>
     <h1>Variants:</h1>
-    <p>Show all variants with filters</p>
+    <p>Show all variants and filters</p>
     <hr />
-
-    <p>Table comes here</p>
+    <p>Variants:</p>
     <variant-table :variants="variants" />
     <hr />
     <p>{{ $route.params.id }}</p>
 
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-
-    <hr />
 
     <filter-component />
   </div>
@@ -39,9 +35,9 @@ export default {
   },
   methods: {
     // To get selected items in table
-    rowSelected(items) {
-      this.selectedItems = items;
-    },
+    // rowSelected(items) {
+    //   this.selectedItems = items;
+    // },
   },
 };
 </script>

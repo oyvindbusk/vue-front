@@ -14,16 +14,8 @@
         <hr>
         <span v-html="loggedInStatus"></span>
         <login v-show="!loggedInStatus"/>
-        <h1>{{products.userId}}</h1>
         <hr>
-        <b-button variant="success" v-on:click="getSamples">samples</b-button>
-        <h1>{{samples.items}}</h1>
-        <b-table selectable select-mode="single" @row-selected="rowSelected" striped hover outlined :items="items" :small="small" :fields="fields"></b-table>
-        {{selectedItems}}
         <hr>
-        <p>
-        Reroute to A new view with sample id as parameter
-        </p>
         
         <hr>
         <!-- <b-button variant="success" v-on:click="getVariants">Variants</b-button>
@@ -59,33 +51,27 @@ export default {
     },
     data() {
         return {
-            items: [],
-            selectedItems: [],
-            
             loggedInStatus: "",
-            samples: "",
-            fields: [
-          {
-            key: 'sampleID',
-            label: 'Sample ID',
-            sortable: true
-          },
-          {
-            key: 'panel',
-            sortable: true
-          },
-        ],
-        small: true,
-        }
-    },
-    computed: {
-        products() {
-            return this.$store.getters.products;
+        //     items: [],
+        //     selectedItems: [],
+        //     samples: "",
+        //     fields: [
+        //   {
+        //     key: 'sampleID',
+        //     label: 'Sample ID',
+        //     sortable: true
+        //   },
+        //   {
+        //     key: 'panel',
+        //     sortable: true
+        //   },
+        // ],
+        // small: true,
         }
     },
     created: function() {
-        this.$store.dispatch('initStore'),
-        this.getSamples()
+        // this.$store.dispatch('initStore'),
+        // this.getSamples()
     },
     methods: {
         checkLoggedIn: function () {
@@ -113,14 +99,9 @@ export default {
             .then(response => response.data)
             .then(data => this.samples = data)
         },
-        // To get selected items in table
-        rowSelected(items) {
-        this.selectedItems = items
-      },
+  
     },
-    watch: {
-
-    }
+    
 }
 
 

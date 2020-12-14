@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { config } from "../../config.js";
-
+import { config } from '../../config.js';
 
 const state = {
 	variants: {}
@@ -13,7 +12,7 @@ const getters = {
 const actions = {
 	initVariantStore: ({ commit }) => {
 		axios.get(config.$backend_url + '/newVariants', { withCredentials: true }).then((response) => {
-			commit('SET_STORE', response.data.variants);
+			commit('SET_STORE', Object.values(response.data.variants));
 		});
 	}
 };
