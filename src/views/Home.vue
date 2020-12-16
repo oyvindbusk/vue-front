@@ -22,15 +22,20 @@
         <h1>{{variants}}</h1> -->
         <hr>
         <h3>TODOLIST:</h3>
-        <li>Get request into vuex store <span class="badge badge-secondary">Done</span></li>
-        <li>Json from request into datatable</li>
         <li>Importer en metode fra en mixin</li>
-        <li>Lag og test ett filter</li>
         <li>Json from request into plotly</li>
         <li>Adding filter, search, select, sort and export to table</li>
-        <li>Add open modal on click of table</li>
+        
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
         <br>
         <h3>Done:</h3>
+        <li>Add open modal on click of table<span class="badge badge-secondary">Done</span></li>
+        <li>Lag og test ett filter <span class="badge badge-secondary">Done</span></li>
+        <li>Get request into vuex store <span class="badge badge-secondary">Done</span></li>
+        <li>Json from request into datatable <span class="badge badge-secondary">Done</span></li>
         <li>Add datatable <span class="badge badge-secondary">Done</span></li>
         <li>Add test axios get request <span class="badge badge-secondary">Done</span></li>
         <li>Setup vuex <span class="badge badge-secondary">Done</span></li>
@@ -52,21 +57,6 @@ export default {
     data() {
         return {
             loggedInStatus: "",
-        //     items: [],
-        //     selectedItems: [],
-        //     samples: "",
-        //     fields: [
-        //   {
-        //     key: 'sampleID',
-        //     label: 'Sample ID',
-        //     sortable: true
-        //   },
-        //   {
-        //     key: 'panel',
-        //     sortable: true
-        //   },
-        // ],
-        // small: true,
         }
     },
     created: function() {
@@ -76,8 +66,8 @@ export default {
     methods: {
         checkLoggedIn: function () {
             //this.$store.dispatch('ActionGetLoggedStatus')
-            const baseURI = 'http://localhost:5001/chklogin'
-            //const baseURI = 'https://jsonplaceholder.typicode.com/todos/1'
+            //const baseURI = 'http://localhost:5001/chklogin'
+            const baseURI = 'http://172.16.0.3:5001/chklogin'
             this.$http.get(baseURI, {withCredentials: true})
             .then(response => response.data)
             .then(data => this.loggedInStatus = data.logstatus)
@@ -85,16 +75,18 @@ export default {
             },
         getSamples: function () {
             //this.$store.dispatch('ActionGetLoggedStatus')
-            const baseURI = 'http://localhost:5001/newsamples'
-            //const baseURI = 'https://jsonplaceholder.typicode.com/todos/1'
+            const baseURI = 'http://172.16.0.3:5001/newsamples'
+            // const baseURI = 'http://localhost:5001/newsamples'
+            
             this.$http.get(baseURI, {withCredentials: true})
             .then(response => response.data)
             .then(data => this.items = data.items)
         },
         getVariants: function () {
             //this.$store.dispatch('ActionGetLoggedStatus')
-            const baseURI = 'http://localhost:5001/newVariants'
-            //const baseURI = 'https://jsonplaceholder.typicode.com/todos/1'
+            const baseURI = 'http://172.16.0.3:5001/newVariants'
+            // const baseURI = 'http://localhost:5001/newVariants'
+            
             this.$http.get(baseURI, {withCredentials: true})
             .then(response => response.data)
             .then(data => this.samples = data)

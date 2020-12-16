@@ -6,8 +6,16 @@ const state = {
 };
 
 const getters = {
-	variants: (state) => state.variants
+	variants: (state) => state.variants,
+
+	filtered_variants: state => {
+		return state.variants.filter(vari => {vari.chr == "1"})
+	}
+	
+
+	
 };
+
 
 const actions = {
 	initVariantStore: ({ commit }) => {
@@ -15,6 +23,7 @@ const actions = {
 			commit('SET_STORE', Object.values(response.data.variants));
 		});
 	}
+
 };
 
 const mutations = {

@@ -10,7 +10,7 @@ const getters = {
 
 const actions = {
 	initStore: ({ commit }) => {
-		axios.get('https://localhost:5001/chklogin', { withCredentials: true }).then((response) => {
+		axios.get('https://172.16.0.3:5001/chklogin', { withCredentials: true }).then((response) => {
 			console.log(response.data);
 			// if response is string of true or false, return. Else return false and send something to the console.
 			commit('SET_STORE', Boolean(response.data.loginstatus));

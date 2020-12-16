@@ -55,8 +55,7 @@ export default {
       },
         },
         watch: {
-            selectedSample: function (val) {
-                console.log(val)
+            selectedSample: function () {
                 this.$router.push({name: 'Variants', params: {id: this.selectedSample}})
     }}
 }

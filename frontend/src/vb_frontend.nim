@@ -408,7 +408,7 @@ routes:
     # Query backend api for the samples:
     let sample_ids = parseJson("""{"items": [{"sampleID": "763_20", "panel": "ALS"},
     {"sampleID": "591_20", "panel": "CMT"}]}""")
-    resp(Http200, {"Access-Control-Allow-Origin" : "http://localhost:8080", "Access-Control-Allow-Credentials": "true" }, $(sample_ids))
+    resp(Http200, {"Access-Control-Allow-Origin" : "http://172.16.0.3:8080", "Access-Control-Allow-Credentials": "true" }, $(sample_ids))
   
 
   get "/newVariants":
@@ -422,4 +422,4 @@ routes:
         {"chr": "X", "pos": 10, "ref": "c", "alt": "c", "HGMD": "DM"},
       ]
       }""")
-    resp(Http200, {"Access-Control-Allow-Origin" : "http://localhost:8080", "Access-Control-Allow-Credentials": "true" }, $(variants))
+    resp(Http200, {"Access-Control-Allow-Origin" : "http://172.16.0.3:8080", "Access-Control-Allow-Credentials": "true" }, $(variants))
