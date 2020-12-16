@@ -2,7 +2,7 @@ let config;
 
 config = {
 	$api_url: 'http://0.0.0.0:5001',
-	$backend_url: 'http://172.16.0.3:5001',
+	$backend_url: 'http://localhost:5001',
 	filteroptions: [
 		{ value: null, text: 'Please select an option' },
 		{ value: 'eq', text: 'Equal to' },

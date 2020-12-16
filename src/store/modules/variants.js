@@ -8,22 +8,23 @@ const state = {
 const getters = {
 	variants: (state) => state.variants,
 
-	filtered_variants: state => {
-		return state.variants.filter(vari => {vari.chr == "1"})
+	filtered_variants: (state) => {
+		return state.variants.filter((vari) => {
+			vari.chr == '1';
+		});
 	}
-	
-
-	
 };
-
 
 const actions = {
 	initVariantStore: ({ commit }) => {
 		axios.get(config.$backend_url + '/newVariants', { withCredentials: true }).then((response) => {
-			commit('SET_STORE', Object.values(response.data.variants));
+			var variants = response.data.variants;
+			variants.forEach((variant, index) => {
+				variants[index]['changed'] = false;
+			});
+			commit('SET_STORE', Object.values(variants));
 		});
 	}
-
 };
 
 const mutations = {

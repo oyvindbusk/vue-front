@@ -24,21 +24,11 @@
           class="mr-1"
         >
           Info modal
+          
         </b-button>
-        <b-button size="sm" @click="interp(row.item, row.index, $event.target)" class="mr-1">
-         Interp modal
-        </b-button>
+        
       </template>
 
-      <!-- <template #row-details="row">
-        <b-card>
-          <ul text-align:left>
-            <li v-for="(value, key) in row.item" :key="key">
-              {{ key }}: {{ value }}
-            </li>
-          </ul>
-        </b-card>
-      </template> -->
     </b-table>
 
     {{ selectedItems }}
@@ -56,7 +46,24 @@
       ok-only
       @hide="resetInfoModal"
     >
-      <pre>{{ infoModal.content }}</pre>
+      <pre> Comment and class for variant:
+    <div class="form-row">  
+      <div class="form-group col-md-8">
+        <label>Comment</label>
+      <b-form-textarea
+        id="textarea"
+        size="sm"
+        placeholder="Comment here: "
+        
+      ></b-form-textarea>
+      </div>
+      
+      <div class="form-group col-md-3">
+        <label>Class</label>
+      <b-form-select :options="options"  class="py-sm-0 form-control"></b-form-select>
+      </div>    
+    </div>
+      {{ infoModal.content }}</pre>
     </b-modal>
     <br />
   </div>
@@ -81,6 +88,15 @@ export default {
         title: "",
         content: "",
       },
+      options: [
+          { value: null, text: 'Please select an option' },
+          { value: 1, text: '1' },
+          { value: 2, text: '2' },
+          { value: 3, text: '3' },
+          { value: 4, text: '4' },
+          { value: 5, text: '5' },
+          { value: 'U', text: 'U' },
+      ]
     };
   },
   methods: {
@@ -102,12 +118,7 @@ export default {
       this.infoModal.title = "";
       this.infoModal.content = "";
     },
-    interp(item, index, button) {
-      this.infoModal.title = `Row index: ${index}`;
-      this.infoModal.content = config.testhtml
-      // this.infoModal.content = JSON.stringify(item, null, 2) ;
-      this.$root.$emit("bv::show::modal", this.infoModal.id, button);
-    }
+    
   },
   computed: {},
 };

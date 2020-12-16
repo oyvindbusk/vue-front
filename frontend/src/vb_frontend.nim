@@ -408,11 +408,12 @@ routes:
     # Query backend api for the samples:
     let sample_ids = parseJson("""{"items": [{"sampleID": "763_20", "panel": "ALS"},
     {"sampleID": "591_20", "panel": "CMT"}]}""")
-    resp(Http200, {"Access-Control-Allow-Origin" : "http://172.16.0.3:8080", "Access-Control-Allow-Credentials": "true" }, $(sample_ids))
+    resp(Http200, {"Access-Control-Allow-Origin" : "http://localhost:8080", "Access-Control-Allow-Credentials": "true" }, $(sample_ids))
   
 
   get "/newVariants":
     echo @"sampleID"
+    let sample = @"sampleID"
     # Query backend api for the samples:
     let variants = parseJson("""{"variants": 
       [
@@ -420,6 +421,8 @@ routes:
         {"chr": "1", "pos": 300, "ref": "a", "alt": "tt", "HGMD": "DM"},
         {"chr": "2", "pos": 200, "ref": "g", "alt": "t", "HGMD": "DM"},
         {"chr": "X", "pos": 10, "ref": "c", "alt": "c", "HGMD": "DM"},
-      ]
+      ],
+      "sample": "321_20",
+      "sampleComment": ""
       }""")
-    resp(Http200, {"Access-Control-Allow-Origin" : "http://172.16.0.3:8080", "Access-Control-Allow-Credentials": "true" }, $(variants))
+    resp(Http200, {"Access-Control-Allow-Origin" : "http://localhost:8080", "Access-Control-Allow-Credentials": "true" }, $(variants))
