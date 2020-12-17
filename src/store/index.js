@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import app from './store'
 import samples from './modules/samples'
 import variants from './modules/variants'
+import filters from './modules/filters'
 
 Vue.use(Vuex)
 
@@ -11,7 +12,8 @@ export const store  = new Vuex.Store({
     modules: {
         app,
         samples,
-        variants
+        variants,
+        filters
     }
 })
 

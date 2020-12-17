@@ -24,15 +24,18 @@
         <h3>TODOLIST:</h3>
         <li>Importer en metode fra en mixin</li>
         <li>Json from request into plotly</li>
-        <li>Adding filter, search, select, sort and export to table</li>
-        
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>Add a report view and route</li>
+        <li>Add a Report view and route</li>
+        <li>Adding search to table</li>
+        <li>Adding export to table</li>
         <br>
         <h3>Done:</h3>
-        <li>Add open modal on click of table<span class="badge badge-secondary">Done</span></li>
+        <li>watch en vuex-komponent fra en annen komponent <span class="badge badge-secondary">Done</span></li>
+        <li>Importer en funksjon fra en js-fil <span class="badge badge-secondary">Done</span></li>
+        <li>Adding select to table <span class="badge badge-secondary">Done</span></li>
+        <li>Adding sort to table <span class="badge badge-secondary">Done</span></li>
+        <li>Adding export to table<span class="badge badge-secondary">Done</span></li>
+        <li>Add open modal on click of table <span class="badge badge-secondary">Done</span></li>
         <li>Lag og test ett filter <span class="badge badge-secondary">Done</span></li>
         <li>Get request into vuex store <span class="badge badge-secondary">Done</span></li>
         <li>Json from request into datatable <span class="badge badge-secondary">Done</span></li>

@@ -6,13 +6,10 @@ const state = {
 };
 
 const getters = {
-	variants: (state) => state.variants,
-
-	filtered_variants: (state) => {
-		return state.variants.filter((vari) => {
-			vari.chr == '1';
-		});
-	}
+	variants: (state) => {
+		return state.variants
+	},
+	
 };
 
 const actions = {
@@ -21,6 +18,7 @@ const actions = {
 			var variants = response.data.variants;
 			variants.forEach((variant, index) => {
 				variants[index]['changed'] = false;
+				variants[index]['visibility'] = true;
 			});
 			commit('SET_STORE', Object.values(variants));
 		});

@@ -1,12 +1,8 @@
   <template>
   <div>
-
-
     <hr>
     <h1>Variants:</h1>
     <p>Show all variants and filters</p>
-
-      
   <b-container fluid>
   <b-row>
     <b-col sm="2">
@@ -39,6 +35,8 @@
 import FilterComponent from "../components/FilterComponent.vue";
 import VariantTable from "../components/VariantTable";
 
+
+
 export default {
   name: "variants",
   components: {
@@ -55,6 +53,8 @@ export default {
         this.$store.commit("SET_STORE", value);
       },
     },
+    
+    
   },
   created: function () {
     this.$store.dispatch("initVariantStore");

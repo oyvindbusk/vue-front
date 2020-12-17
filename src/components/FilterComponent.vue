@@ -57,6 +57,11 @@
         <button @click="removefilter" type="button" class="btn btn-secondary">
           Remove filters
         </button>
+        <p></p>
+        <button @click="applyfilter" type="button" class="btn btn-secondary">
+          Apply filters
+        </button>
+
       </div>
         {{ filters }}
       <hr />
@@ -75,18 +80,12 @@
 
 <script>
 import { config } from "../config.js";
+
 export default {
     name: "filtercomponent",
       data() {
     return {
-      filters: [
-        {
-          filtervalue: "",
-          operator: "",
-          keepmiss: false,
-          columns: ""
-        },
-      ],
+
       filteroptions: config.filteroptions,
       columnoptions: config.columnoptions,
     };
@@ -99,18 +98,28 @@ export default {
         keepmiss: false,
         columns: ""
       });
+      this.$store.commit("UPDATE_FILTERS", this.filters);
     },
     removefilter() {
         this.filters.pop();
-
+        this.$store.commit("UPDATE_FILTERS", this.filters);
     },
-    submit() {
-      const data = {
-        filters: this.filters,
-      };
-      alert(JSON.stringify(data, null, 2));
-    },
+    applyfilter() {
+        this.$store.commit("UPDATE_FILTERS", this.filters);
+    }
   },
+  computed: {
+    filters: {
+      get() {
+        return this.$store.getters.filters
+      },
+      set(value) {
+        this.$store.commit("UPDATE_FILTERS", value);
+      },
+      
+    }
+    
+  }
 
 
 
