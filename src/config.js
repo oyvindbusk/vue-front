@@ -21,7 +21,9 @@ config = {
 		{ value: 'Pos', text: 'Pos' },
 		{ value: 'Ref', text: 'Ref' },
 		{ value: 'Alt', text: 'Alt' },
-		{ value: 'HGMD', text: 'HGMD' }
+		{ value: 'HGMD', text: 'HGMD' },
+		{ value: 'Class', text: 'Class' },
+		{ value: 'Comment', text: 'Comment' }
 	],
 	vartablefields: [
 		{
