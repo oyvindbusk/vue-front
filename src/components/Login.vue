@@ -2,7 +2,7 @@
     <div class="container" id="login">
         <div class="row row justify-content-center">
             <div class="col-xs-12">
-                <form name="login" action="http://localhost:5001/dologin" method="POST" class="box">
+                <form name="login" :action="login_URL" method="POST" class="box">
                     <h1 class="h3">Please sign in</h1>
     
                     <label for="defaultFormLoginEmailEx" class="grey-text">Your email</label>
@@ -11,6 +11,7 @@
                     <label for="defaultFormLoginPasswordEx" class="grey-text">Your password</label>
                     <input name="password" type="password" class="form-control input is-rounded" dir="auto" value="Pass" />
                     <div class="text-center mt-4">
+                    <input href="#" type="submit" class="btn btn-primary" value="Login" />
                         <!-- <button class="w-100 btn btn-lg btn-primary" type="submit" value="Login">Sign in</button> -->
                     </div>
                 </form>
@@ -20,14 +21,18 @@
 </template>
 
 <script>
+import { config } from '../config.js';
 export default {
+
+    
     name: "login",
     data() {
         return {
             input: {
                 username: "",
                 password: ""
-            }
+            },
+            login_URL: config.$backend_url + '/dologin'
 
         }
     }

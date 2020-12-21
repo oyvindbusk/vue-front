@@ -261,7 +261,7 @@ routes:
         replace(@"password", " ", ""))
     if loginB:
       jester.setCookie("sid", loginS, daysForward(7))
-      #redirect("/select")
+      redirect("http://localhost:8080/")
       #resp Http200, {"Access-Control-Allow-Origin": "*"}, "Content"
       resp %*{"data": "success"}
       #resp(Http200, {"Access-Control-Allow-Origin" : "http://localhost:8080", "Access-Control-Allow-Credentials": "true" }, """{"data": "success"}""")
@@ -408,7 +408,7 @@ routes:
     # Query backend api for the samples:
     let sample_ids = parseJson("""{"items": [{"sampleID": "763_20", "panel": "ALS"},
     {"sampleID": "591_20", "panel": "CMT"}]}""")
-    resp(Http200, {"Access-Control-Allow-Origin" : "http://172.16.0.3:8080", "Access-Control-Allow-Credentials": "true" }, $(sample_ids))
+    resp(Http200, {"Access-Control-Allow-Origin" : "http://localhost:8080", "Access-Control-Allow-Credentials": "true" }, $(sample_ids))
   
 
   get "/newVariants":
@@ -425,4 +425,10 @@ routes:
       "sample": "$#",
       "sampleComment": ""
       }""" % [sample])
-    resp(Http200, {"Access-Control-Allow-Origin" : "http://172.16.0.3:8080", "Access-Control-Allow-Credentials": "true" }, $(variants))
+    resp(Http200, {"Access-Control-Allow-Origin" : "http://localhost:8080", "Access-Control-Allow-Credentials": "true" }, $(variants))
+  
+
+  get "/newlogout":
+    createTFD()
+    logout(c)
+    redirect("http://localhost:8080/")

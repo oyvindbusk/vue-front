@@ -10,14 +10,22 @@
             <em>User</em>
           </template>
           <b-dropdown-item to="/profile">Profile</b-dropdown-item>
-          <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+          <b-dropdown-item :href="signOut_URL">Sign Out</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
 </b-navbar>
 </template>
 
 <script>
+import { config } from '../config.js';
 export default {
-    name: "navbar"
+
+
+    name: "navbar",
+    data() {
+      return {
+        signOut_URL: config.$signout_url()
+      }
+    }
 }
 </script>

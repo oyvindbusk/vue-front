@@ -1,8 +1,10 @@
 let config;
 
 config = {
-	$api_url: 'http://0.0.0.0:5001',
-	$backend_url: 'http://172.16.0.3:5001',
+	$backend_url: 'http://localhost:5001',
+	$signout_url: function() {
+		return this.$backend_url + '/newlogout';
+	},
 	filteroptions: [
 		{ value: null, text: 'Please select an option' },
 		{ value: 'eq', text: 'Equal to' },
@@ -25,32 +27,50 @@ config = {
 		{
 			key: 'chr',
 			label: 'Chromosome',
-			sortable: true
+			sortable: true,
+			type: 'string'
 		},
 		{
 			key: 'pos',
 			label: 'Position',
-			sortable: true
+			sortable: true,
+			type: 'int'
 		},
 		{
 			key: 'ref',
 			label: 'Ref Allele',
-			sortable: true
+			sortable: true,
+			type: 'string'
 		},
 		{
 			key: 'alt',
 			label: 'Alt Allele',
-			sortable: true
+			sortable: true,
+			type: 'string'
 		},
 		{
 			key: 'HGMD',
 			label: 'HGMD',
-			sortable: true
+			sortable: true,
+			type: 'string'
+		},
+		{
+			key: 'class',
+			label: 'class',
+			sortable: true,
+			type: 'string'
+		},
+		{
+			key: 'comment',
+			label: 'comment',
+			sortable: true,
+			type: 'string'
 		},
 		{
 			key: 'actions',
 			label: 'actions',
-			sortable: true
+			sortable: true,
+			type: 'string'
 		}
 	],
 	testhtml: `

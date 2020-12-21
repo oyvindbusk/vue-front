@@ -1,25 +1,8 @@
 <template>
     <div>
         <h1>Home</h1>
-        <p>Import everything here</p>
-        <p>
-            Automatically check if logged in, then reroute to login.<br>
-            This site should check if logged in on site load, and only show login options if not logged in. <br>
-            When logged in a table with the samples available for interp should be shown.
-        </p>
-        <br><br><br><br><br><br><br>
-        <hr>
-        <p>Code routing: method section -> this.$router.push({name: nameofroute, })</p>
-        <b-button variant="success" v-on:click="checkLoggedIn">Logged in?</b-button>
-        <hr>
-        <span v-html="loggedInStatus"></span>
+        <span v-show="loggedInStatus">You are already loggin in. Go to <a v-bind:href="samples_URL">samples ready for interpretation. </a></span>
         <login v-show="!loggedInStatus"/>
-        <hr>
-        <hr>
-        
-        <hr>
-        <!-- <b-button variant="success" v-on:click="getVariants">Variants</b-button>
-        <h1>{{variants}}</h1> -->
         <hr>
         <h3>TODOLIST:</h3>
         <li>Importer en metode fra en mixin</li>
@@ -52,6 +35,8 @@
 
 <script>
 import Login from '../components/Login.vue';
+import { config } from '../config.js';
+
 
 export default {
     components: {
@@ -60,34 +45,25 @@ export default {
     data() {
         return {
             loggedInStatus: "",
+            samples_URL: "/samples"
         }
     },
     created: function() {
-        // this.$store.dispatch('initStore'),
-        // this.getSamples()
+        this.checkLoggedIn()
+
     },
     methods: {
         checkLoggedIn: function () {
-            //this.$store.dispatch('ActionGetLoggedStatus')
-            //const baseURI = 'http://localhost:5001/chklogin'
-            const baseURI = 'http://172.16.0.3:5001/chklogin'
+            const baseURI = config.$backend_url + '/chklogin'
             this.$http.get(baseURI, {withCredentials: true})
             .then(response => response.data)
             .then(data => this.loggedInStatus = data.logstatus)
             console.log(this.appConfig.someOtherProps)
             },
-        getSamples: function () {
-            //this.$store.dispatch('ActionGetLoggedStatus')
-            const baseURI = 'http://172.16.0.3:5001/newsamples'
-            // const baseURI = 'http://localhost:5001/newsamples'
-            
-            this.$http.get(baseURI, {withCredentials: true})
-            .then(response => response.data)
-            .then(data => this.items = data.items)
-        },
+      
         getVariants: function () {
             //this.$store.dispatch('ActionGetLoggedStatus')
-            const baseURI = 'http://172.16.0.3:5001/newVariants'
+            const baseURI = config.$backend_url +'/newVariants'
             // const baseURI = 'http://localhost:5001/newVariants'
             
             this.$http.get(baseURI, {withCredentials: true})
@@ -98,7 +74,6 @@ export default {
     },
     
 }
-
 
 
 </script>
