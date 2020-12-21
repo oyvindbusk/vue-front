@@ -5,6 +5,7 @@ import Profile from '../views/Profile.vue';
 import Home from '../views/Home.vue';
 import Samples from '../views/Samples.vue';
 import Variants from '../views/Variants.vue';
+import Report from '../views/Report.vue';
 
 const routes = [
 	{
@@ -27,6 +28,11 @@ const routes = [
 		path: '/profile',
 		name: 'Profile',
 		component: Profile
+	},
+	{
+		path: '/report',
+		name: 'Report',
+		component: Report
 	}
 ];
 const router = new VueRouter({

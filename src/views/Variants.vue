@@ -28,6 +28,11 @@
 
     <hr>
     <filter-component />
+
+    <p>Her skal det komme en knapp med en redirect til Report</p>
+      <button @click="routeReport" type="button" class="btn btn-secondary">
+        Go to report
+        </button>
   </div>
 </template>
 
@@ -65,6 +70,9 @@ export default {
       }
   },
   methods: {
+    routeReport: function() {
+      this.$router.push({name: 'Report'})
+    }
 
   },
 };

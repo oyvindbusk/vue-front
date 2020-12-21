@@ -88,8 +88,6 @@ export default {
 	data() {
 		return {
 			selectedItems: {},
-			h: "test",
-			// Note 'isActive' is left out and will not appear in the rendered table
 			fields: config.vartablefields,
 			small: true,
 			infoModal: {
