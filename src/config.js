@@ -17,13 +17,13 @@ config = {
 	],
 	columnoptions: [
 		{ value: null, text: 'Please select a column' },
-		{ value: 'Chr', text: 'Chr' },
-		{ value: 'Pos', text: 'Pos' },
-		{ value: 'Ref', text: 'Ref' },
-		{ value: 'Alt', text: 'Alt' },
+		{ value: 'chr', text: 'Chr' },
+		{ value: 'pos', text: 'Pos' },
+		{ value: 'ref', text: 'Ref' },
+		{ value: 'alt', text: 'Alt' },
 		{ value: 'HGMD', text: 'HGMD' },
-		{ value: 'Class', text: 'Class' },
-		{ value: 'Comment', text: 'Comment' }
+		{ value: 'class', text: 'Class' },
+		{ value: 'comment', text: 'Comment' }
 	],
 	vartablefields: [
 		{

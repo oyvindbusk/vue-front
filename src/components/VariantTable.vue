@@ -115,13 +115,16 @@ export default {
 			this.selectedItems = line;
 		},
 		filterVariants: function () {
-			this.$emit(
-				"update:variants",
-				this.variants.map(helper_funcs.set_vis_false, {filters: this.filters})
-			);
+			const filterd = this.variants.map(helper_funcs.set_vis_false)
+			Array.prototype.forEach.call(this.filters, filter => {
+				Array.prototype.push.apply(filterd, this.variants.map(helper_funcs.filter_variants, {filter: filter}));
+			})
+			const uniq = new Set(filterd.map(e => JSON.stringify(e)));
+			const res = Array.from(uniq).map(e => JSON.parse(e));
+			this.$emit("update:variants",res);
 		},
 		unfilterVariants: function () {
-			this.$emit("update:variants", this.variants.map(helper_funcs.set_vis_true, {filters: "filter"}));
+			this.$emit("update:variants", this.variants.map(helper_funcs.set_vis_true));
 		},
 
 		info(item, index, button) {
