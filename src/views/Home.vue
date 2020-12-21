@@ -7,8 +7,7 @@
         <h3>TODOLIST:</h3>
         <li>Importer en metode fra en mixin</li>
         <li>Json from request into plotly</li>
-        <li>Add a report view and route</li>
-        <li>Add a Report view and route</li>
+        <li>Add a Report view and route <span class="badge badge-secondary">Done</span></li>
         <li>Adding search to table</li>
         <li>Adding export to table</li>
         <br>

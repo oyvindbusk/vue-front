@@ -35,10 +35,13 @@ var helper_funcs = {
 				if (variant[this.filter.columns] > this.filter.filtervalue) {
 					variant.visibility = true;
 				}
-
 				break;
 		}
-
+		if (this.filter.keepmiss == false) {
+			if (variant[this.filter.columns] === '') {
+				variant.visibility = true;
+			}
+		}
 		return variant;
 	}, //
 	set_vis_false(variant) {

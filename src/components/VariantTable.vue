@@ -119,7 +119,7 @@ export default {
 			Array.prototype.forEach.call(this.filters, filter => {
 				Array.prototype.push.apply(filterd, this.variants.map(helper_funcs.filter_variants, {filter: filter}));
 			})
-			const uniq = new Set(filterd.map(e => JSON.stringify(e)));
+			const uniq = new Set(filterd.map(e => JSON.stringify(e))); // Remove dups are nescecary because of way filters are structured.
 			const res = Array.from(uniq).map(e => JSON.parse(e));
 			this.$emit("update:variants",res);
 		},
