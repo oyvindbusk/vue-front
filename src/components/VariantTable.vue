@@ -55,13 +55,8 @@
 			<pre> Comment and class for variant:
 		<div class="form-row">  
 			<div class="form-group col-md-8">
-				<label>Comment</label>
-			<b-form-textarea
-				id="textarea"
-				size="sm"
-				placeholder="Comment here: "
-				
-			></b-form-textarea>
+				<label>Comment --{{ variants[selectedRowIndex].comment }}-- </label>
+			<b-form-textarea v-model="variants[selectedRowIndex].comment" id="textarea" size="sm" placeholder="Comment here: "></b-form-textarea>
 			</div>
 			
 			<div class="form-group col-md-3">
@@ -88,6 +83,7 @@ export default {
 	data() {
 		return {
 			selectedItems: {},
+			selectedRowIndex: 0,
 			fields: config.vartablefields,
 			small: true,
 			infoModal: {
@@ -128,8 +124,10 @@ export default {
 		},
 
 		info(item, index, button) {
+			this.selectedRowIndex = index
 			this.infoModal.title = `Row index: ${index}`;
 			this.infoModal.content = JSON.stringify(item, null, 2)
+			console.log(this.variants[index].comment)
 			this.$root.$emit("bv::show::modal", this.infoModal.id, button);
 		},
 		resetInfoModal() {

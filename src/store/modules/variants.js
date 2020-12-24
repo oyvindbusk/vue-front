@@ -7,9 +7,8 @@ const state = {
 
 const getters = {
 	variants: (state) => {
-		return state.variants
-	},
-	
+		return state.variants;
+	}
 };
 
 const actions = {
@@ -19,6 +18,7 @@ const actions = {
 			variants.forEach((variant, index) => {
 				variants[index]['changed'] = false;
 				variants[index]['visibility'] = true;
+				variants[index]['comment'] = '';
 			});
 			commit('SET_STORE', Object.values(variants));
 		});
