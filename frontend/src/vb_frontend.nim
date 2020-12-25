@@ -417,10 +417,10 @@ routes:
     # Query backend api for the samples:
     let variants = parseJson("""{"variants": 
       [
-        {"chr": "1", "pos": 100, "ref": "c", "alt": "a", "HGMD": "DM"},
-        {"chr": "1", "pos": 300, "ref": "a", "alt": "tt", "HGMD": "DM"},
-        {"chr": "2", "pos": 200, "ref": "g", "alt": "t", "HGMD": "DM"},
-        {"chr": "X", "pos": 10, "ref": "c", "alt": "c", "HGMD": "DM"},
+        {"chr": "1", "pos": 100, "ref": "c", "alt": "a", "HGMD": "DM","comment": "Dette er en kommentar","class": ""},
+        {"chr": "1", "pos": 300, "ref": "a", "alt": "tt", "HGMD": "DM","comment": "","class": ""},
+        {"chr": "2", "pos": 200, "ref": "g", "alt": "t", "HGMD": "DM","comment": "","class": ""},
+        {"chr": "X", "pos": 10, "ref": "c", "alt": "c", "HGMD": "DM","comment": "","class": ""},
       ],
       "sample": "$#",
       "sampleComment": ""
