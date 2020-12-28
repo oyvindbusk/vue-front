@@ -60,15 +60,15 @@ export default {
             console.log(this.appConfig.someOtherProps)
             },
       
-        getVariants: function () {
-            //this.$store.dispatch('ActionGetLoggedStatus')
-            const baseURI = config.$backend_url +'/newVariants'
-            // const baseURI = 'http://localhost:5001/newVariants'
+        // getVariants: function () {
+        //     //this.$store.dispatch('ActionGetLoggedStatus')
+        //     const baseURI = config.$backend_url +'/newVariants'
+        //     // const baseURI = 'http://localhost:5001/newVariants'
             
-            this.$http.get(baseURI, {withCredentials: true})
-            .then(response => response.data)
-            .then(data => this.samples = data)
-        },
+        //     this.$http.get(baseURI, {withCredentials: true})
+        //     .then(response => response.data)
+        //     .then(data => this.samples = data)
+        // },
   
     },
     

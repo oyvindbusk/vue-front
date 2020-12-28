@@ -4,7 +4,6 @@
             <div class="col-xs-12">
                 <form name="login" :action="login_URL" method="POST" class="box">
                     <h1 class="h3">Please sign in</h1>
-    
                     <label for="defaultFormLoginEmailEx" class="grey-text">Your email</label>
                     <input name="email" type="email" id="defaultFormLoginEmailEx" class="form-control input is-rounded" dir="auto" value="email@email.com" />
                     <br/>
@@ -12,7 +11,6 @@
                     <input name="password" type="password" class="form-control input is-rounded" dir="auto" value="Pass" />
                     <div class="text-center mt-4">
                     <input href="#" type="submit" class="btn btn-primary" value="Login" />
-                        <!-- <button class="w-100 btn btn-lg btn-primary" type="submit" value="Login">Sign in</button> -->
                     </div>
                 </form>
             </div>

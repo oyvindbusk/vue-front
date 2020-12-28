@@ -85,7 +85,6 @@ export default {
     name: "filtercomponent",
       data() {
     return {
-
       filteroptions: config.filteroptions,
       columnoptions: config.columnoptions,
     };

@@ -62,14 +62,3 @@ export default helper_funcs;
 // keepmiss: false,
 // columns: "chr"
 // },
-
-// switch(expression) {
-//     case x:
-//       // code block
-//       break;
-//     case y:
-//       // code block
-//       break;
-//     default:
-//       // code block
-//   }

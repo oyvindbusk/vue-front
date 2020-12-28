@@ -23,9 +23,6 @@
     <hr />
     <variant-table :variants.sync="variants" />
     <hr />
-
-      
-
     <hr>
     <filter-component />
 
@@ -63,10 +60,13 @@ export default {
   },
   created: function () {
     this.$store.dispatch("initVariantStore");
+    
+
   },
   data() {
       return {
-        sample_comment: ""
+        sample_comment: "",
+        
       }
   },
   methods: {

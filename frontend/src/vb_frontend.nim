@@ -417,10 +417,10 @@ routes:
     # Query backend api for the samples:
     let variants = parseJson("""{"variants": 
       [
-        {"chr": "1", "pos": 100, "ref": "c", "alt": "a", "HGMD": "DM","comment": "Dette er en kommentar","class": ""},
-        {"chr": "1", "pos": 300, "ref": "a", "alt": "tt", "HGMD": "DM","comment": "","class": ""},
-        {"chr": "2", "pos": 200, "ref": "g", "alt": "t", "HGMD": "DM","comment": "","class": ""},
-        {"chr": "X", "pos": 10, "ref": "c", "alt": "c", "HGMD": "DM","comment": "","class": ""},
+        {"chr": "1", "pos": 100, "ref": "c", "alt": "a",  "HGMD": "DM", "comment": "Dette er en kommentar","class": ""},
+        {"chr": "1", "pos": 300, "ref": "a", "alt": "tt", "HGMD": "DM", "comment": "c", "class": "3"},
+        {"chr": "2", "pos": 200, "ref": "g", "alt": "t",  "HGMD": "DM", "comment": "c", "class": ""},
+        {"chr": "X", "pos": 10, "ref": "c", "alt": "c",   "HGMD": "DM", "comment": "c", "class": ""},
       ],
       "sample": "$#",
       "sampleComment": ""
@@ -432,3 +432,17 @@ routes:
     createTFD()
     logout(c)
     redirect("http://localhost:8080/")
+
+  get "/newuser":
+    createTFD()
+    if c.loggedIn:
+      resp(Http200, {"Access-Control-Allow-Origin" : "http://localhost:8080", "Access-Control-Allow-Credentials": "true" }, c.username)
+    else:
+      resp(Http200, {"Access-Control-Allow-Origin" : "http://localhost:8080", "Access-Control-Allow-Credentials": "true" }, "not logged in")
+
+  post "/newpost":
+    echo "post"
+    #var postInterpData = parseJson(request.body)
+    echo pretty(parseJson(request.body))
+    #redirect("http://localhost:8080/")
+    resp(Http200, {"Access-Control-Allow-Origin":"*", "Access-Control-Allow-Credentials": "true"} ,"ok")

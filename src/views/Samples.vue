@@ -38,6 +38,7 @@ export default {
   },
     created: function () {
         this.getSamples()
+        
     },
     methods: { 
         getSamples: function () {
