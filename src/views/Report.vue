@@ -1,90 +1,101 @@
 <template>
-  <div ref="content">
-    <h1>Report</h1>
-    <!-- <button @click="download_pdf" type="button" class="btn btn-secondary">
-          Download pdf
-        </button> -->
-    <ul id="example-1" >
-    <li v-for="item in variants" :key="item.class" >
-        {{ item.chr }}
-    </li>
-    </ul>
+  <div >
+    
+<div>
+  <b-jumbotron id="content" :header="'Report for sample ' + $route.params.id" >
+    <p>Interpreted by: {{ username }} @{{date}}</p>
+    <b-button variant="primary" href="#">Generate Report</b-button>
+<br>
+<br>
+<b-row>
+  <b-col>
+  
+<b-card-group deck>
+  <b-card header="Interpreted variants">
+    <b-list-group>
+      <b-list-group-item v-for="(item, index) in variants" :key="index">
+         Pos: Chr{{ item.chr }}:{{ item.pos }}-{{ item.ref }}-{{ item.alt }} HGMD: {{ item.HGMD }}  Comment: {{ item.comment }}  Class: {{ item.class }}
+
+      </b-list-group-item>
+
+    </b-list-group>
+
+    <p class="card-text mt-2">
+      This is the comment in the ending of the list
+    </p>
+  </b-card>
+</b-card-group>
+</b-col>
+<b-col>
+  <div>
+  <b-card-group deck>
+    <b-card
+      header="Information"
+      header-tag="header"
+      footer="Card Footer"
+      footer-tag="footer"
+      title="Details"
+    >
+      <b-card-text>There is a total of {{variants.length}} variants in this sample. <br>
+      Variants without class set: {{variants.filter(function (variant) {return variant.class === ''}).length}}
+      </b-card-text>
+    </b-card>
 
 
-
-
-    <ul class="list-group">
-      <li class="list-group-item">Dapibus ac facilisis in</li>
-
-      <li class="list-group-item list-group-item-primary">
-        A simple primary list group item
-      </li>
-      <li class="list-group-item list-group-item-secondary">
-        A simple secondary list group item
-      </li>
-      <li class="list-group-item list-group-item-success">
-        A simple success list group item
-      </li>
-      <li class="list-group-item list-group-item-danger">
-        A simple danger list group item
-      </li>
-      <li class="list-group-item list-group-item-warning">
-        A simple warning list group item
-      </li>
-      <li class="list-group-item list-group-item-info">
-        A simple info list group item
-      </li>
-      <li class="list-group-item list-group-item-light">
-        A simple light list group item
-      </li>
-      <li class="list-group-item list-group-item-dark">
-        A simple dark list group item
-      </li>
-
-
-
-
-    <div class="row">
-  <div class="col-4">
-    <div class="list-group" id="list-tab" role="tablist">
-      <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
-      <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
-      <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
-      <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
-    </div>
-  </div>
-  <div class="col-8">
-    <div class="tab-content" id="nav-tabContent">
-      <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">...</div>
-      <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">...</div>
-      <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
-      <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
-    </div>
-  </div>
+  </b-card-group>
 </div>
 
+</b-col>
+</b-row>
 
 
 
 
-    </ul>
 
-    {{ variants }}
+  </b-jumbotron>
+
+  <b-button class="btn" @click="downloadPDF">Save pdf</b-button>
+</div>
+    <!-- {{ variants }} -->
+
+    <hr>
+    
   </div>
 </template>
 
 <script>
 // import { config } from '../config.js';
-// import jsPDF from 'jspdf';
+import jsPDF from 'jspdf'
+import { mapGetters } from "vuex";
 
 export default {
   data() {
-    return {};
+    return {
+      username: this.$store.getters.username,
+      
+    };
   },
-  created: function () {},
-  methods: {},
+  created: function () {
+    // this.$store.dispatch("initUserStore");
+  },
+  methods: {
+    downloadPDF() {
+       var pdf = new jsPDF('p', 'pt', 'a4');
+    pdf.html(document.getElementById('content'), {
+        callback: function (pdf) {
+            pdf.save('a4.pdf');
+        }
+    });
+      
+
+
+
+    }
+  },
 
   computed: {
+    ...mapGetters(["filters"]),
+    date: {get() {return new Date().toJSON().slice(0,10).replace(/-/g,'/')}},
     variants: {
       get() {
         return this.$store.getters.variants;

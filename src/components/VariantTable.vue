@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="container">
-
+    <h1>{{username}}</h1>
 
     <b-table
       ref="table"

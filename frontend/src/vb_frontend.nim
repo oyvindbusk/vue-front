@@ -420,7 +420,7 @@ routes:
         {"chr": "1", "pos": 100, "ref": "c", "alt": "a",  "HGMD": "DM", "comment": "Dette er en kommentar","class": ""},
         {"chr": "1", "pos": 300, "ref": "a", "alt": "tt", "HGMD": "DM", "comment": "c", "class": "3"},
         {"chr": "2", "pos": 200, "ref": "g", "alt": "t",  "HGMD": "DM", "comment": "c", "class": ""},
-        {"chr": "X", "pos": 10, "ref": "c", "alt": "c",   "HGMD": "DM", "comment": "c", "class": ""},
+        {"chr": "X", "pos": 10, "ref": "c", "alt": "c",   "HGMD": "DM", "comment": "", "class": ""},
       ],
       "sample": "$#",
       "sampleComment": ""
