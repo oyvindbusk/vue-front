@@ -145,15 +145,38 @@ export default {
       console.log(Object.keys(this.filters))
       if (Object.keys(this.filters)[0]  === "regular") {
           Array.prototype.forEach.call(this.filters.regular, (filter) => {
-          Array.prototype.push.apply(
-            filterd,
-            this.variants.map(helper_funcs.filter_variants, { filter: filter })
+          Array.prototype.push.apply(filterd, this.variants.map(helper_funcs.filter_variants, { filter: filter })
         );
       });
       const uniq = new Set(filterd.map((e) => JSON.stringify(e))); // Remove dups are necescary because of way filters are structured.
       const res = Array.from(uniq).map((e) => JSON.parse(e));
       this.$emit("update:variants", res); // two way data binding to the variants-view
-      }
+      } else { // Startloop
+        console.log("chain filters")
+        // For each filter
+        // filter and add key as a separate badge in the actions col
+        // If Filter has inheritance: "AR" Then do something with that
+
+        console.log(Object.keys(this.filters))
+        for (const [key, value] of Object.entries(this.filters)) {
+          console.log(`${key}: ${value}`);
+              Array.prototype.forEach.call(this.filters[key], (filter) => {
+              Array.prototype.push.apply(filterd, this.variants.map(helper_funcs.filter_variants, { filter: filter })
+            );
+          });
+          const uniq = new Set(filterd.map((e) => JSON.stringify(e))); // Remove dups are necescary because of way filters are structured.
+          const res = Array.from(uniq).map((e) => JSON.parse(e));
+          
+          this.$emit("update:variants", res); // two way data binding to the variants-view
+        }
+       
+       
+
+      
+
+
+
+        } // endloop
    
     },
 

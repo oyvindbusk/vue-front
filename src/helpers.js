@@ -27,6 +27,7 @@ var helper_funcs = {
 				}
 				break;
 			case 'lt':
+				// Should check and convert to int
 				if (variant[this.filter.columns] < this.filter.filtervalue) {
 					variant.visibility = true;
 				}
@@ -37,7 +38,7 @@ var helper_funcs = {
 				}
 				break;
 		}
-		if (this.filter.keepmiss == false) {
+		if (this.filter.keepmiss == true) {
 			if (variant[this.filter.columns] === '') {
 				variant.visibility = true;
 			}
@@ -52,13 +53,12 @@ var helper_funcs = {
 		// Sets visibility true for all (unapply all filters)
 		variant.visibility = true;
 		return variant;
+	},
+	set_inheritance(variant, inheritance) {
+		// enters a badge in a column
+		variant.inheritance = inheritance;
+		console.log(variant.inheritance);
 	}
 };
 
 export default helper_funcs;
-
-// filtervalue: "1",
-// operator: "eq",
-// keepmiss: false,
-// columns: "chr"
-// },

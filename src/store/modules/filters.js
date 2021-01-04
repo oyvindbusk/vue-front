@@ -20,17 +20,6 @@ const getDefaultState = () => {
 };
 
 const state = getDefaultState();
-// filters: {
-// 	regular: [
-// 		{
-// 			filtervalue: '1',
-// 			operator: 'eq',
-// 			keepmiss: false,
-// 			columns: 'chr'
-// 		}
-// 	]
-// }
-// };
 
 const getters = {
 	filters: (state) => {

@@ -106,6 +106,12 @@ config = {
 			label: 'actions',
 			sortable: true,
 			type: 'string'
+		},
+		{
+			key: 'inheritance',
+			label: 'Inheritance Mode',
+			sortable: true,
+			type: 'string'
 		}
 	],
 	testhtml: `

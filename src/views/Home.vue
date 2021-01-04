@@ -5,7 +5,7 @@
         <login v-show="!loggedInStatus"/>
         <hr>
         <h3>TODOLIST:</h3>
-        <li>Add gene name gnomad and zyg to selectable drop down</li>
+        <li>Add gene name gnomad and zyg to selectable drop down <span class="badge badge-secondary">Done</span></li>
         <li>Move filter function out of the variantTable view to the helpers.js file</li>
         <li>Make working filter chain example</li>
         <li>Add box to select filterchains<span class="badge badge-secondary">Done</span></li>
