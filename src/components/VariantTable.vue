@@ -1,6 +1,11 @@
 <template>
   <div id="app" class="container">
     <h1>{{username}}</h1>
+    <!-- <b-tabs content-class="mt-3">
+        <b-tab title="Regular" active >
+          <b-tab title="Blra" active >
+        </b-tab>
+    </b-tabs> -->
 <div v-if="!loading">
     <b-table
       ref="table"
