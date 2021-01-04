@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="container">
     <h1>{{username}}</h1>
-
+<div v-if="!loading">
     <b-table
       ref="table"
       striped
@@ -35,16 +35,17 @@
 
     {{ selectedItems }}
     <br />
-    <button v-on:click="filterVariants" id="button" class="btn btn-secondary">
+  <b-button-group>
+    <button v-on:click="filterVariants" id="button" class="btn btn-success">
       Filter
     </button>
-
-    <button v-on:click="unfilterVariants" id="button" class="btn btn-secondary">
+    <button v-on:click="unfilterVariants" id="button" class="btn btn-info">
       Clear Filter
     </button>
-    <br />
-
-    {{ variants }}
+  </b-button-group>
+    <br>
+    
+    <!-- {{ variants }} -->
     <br />
     <b-modal
       :id="infoModal.id"
@@ -57,11 +58,13 @@
       "
     >
       <b-container fluid>
+        
         <pre>Set comment and class for variant:</pre>
 
         <b-row class="mb-1">
           <b-col cols="10">
             <label>Comment</label>
+
             <b-form-textarea
               v-model="variants[selectedRowIndex].comment"
               @keyup="
@@ -72,6 +75,7 @@
               size="sm"
               placeholder="Comment here: "
             ></b-form-textarea>
+
           </b-col>
           <b-col cols="2">
             <label>Class</label>
@@ -83,15 +87,14 @@
             ></b-form-select>
           </b-col>
         </b-row>
-
         <pre>
- 
         {{ infoModal.content }}
-		</pre
-        >
+		</pre>
+    
       </b-container>
     </b-modal>
     <br />
+    </div>
   </div>
 </template>
 
@@ -102,7 +105,7 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "varianttable",
-  props: ["variants"],
+  props: ["variants", "loading"],
   created: function () {
     // Get username
     this.$store.dispatch("initUserStore");
@@ -124,26 +127,54 @@ export default {
       totalRows: 1,
       filter: "true",
       filtersapplied: false,
-      filterOn: ["visibility"],
+      filterOn: ["visibility"]
+      
     };
   },
   methods: {
     rowSelected(line) {
+      // Get the selected row in the table
       this.selectedItems = line;
     },
+
     filterVariants: function () {
       this.filtersapplied = true
-      const filterd = this.variants.map(helper_funcs.set_vis_false);
-      Array.prototype.forEach.call(this.filters, (filter) => {
-        Array.prototype.push.apply(
-          filterd,
-          this.variants.map(helper_funcs.filter_variants, { filter: filter })
+      const filterd = this.variants.map(helper_funcs.set_vis_false); // Set all variants hidden
+      // Check if regular or chain filtering:
+      
+      console.log(Object.keys(this.filters))
+      if (Object.keys(this.filters)[0]  === "regular") {
+          Array.prototype.forEach.call(this.filters.regular, (filter) => {
+          Array.prototype.push.apply(
+            filterd,
+            this.variants.map(helper_funcs.filter_variants, { filter: filter })
         );
       });
-      const uniq = new Set(filterd.map((e) => JSON.stringify(e))); // Remove dups are nescecary because of way filters are structured.
+      const uniq = new Set(filterd.map((e) => JSON.stringify(e))); // Remove dups are necescary because of way filters are structured.
       const res = Array.from(uniq).map((e) => JSON.parse(e));
-      this.$emit("update:variants", res);
+      this.$emit("update:variants", res); // two way data binding to the variants-view
+      }
+   
     },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     unfilterVariants: function () {
       this.filtersapplied = false
       this.$emit(
@@ -210,6 +241,8 @@ export default {
   computed: {
     ...mapGetters(["filters"]),
   },
-  mounted() {},
+  mounted() {
+    
+  },
 };
 </script>

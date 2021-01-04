@@ -1,18 +1,36 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+// import { config } from '../../config.js';
 
 Vue.use(Vuex);
 
-const state = {
-	filters: [
-		{
-			filtervalue: '1',
-			operator: 'eq',
-			keepmiss: false,
-			columns: 'chr'
+const getDefaultState = () => {
+	return {
+		filters: {
+			regular: [
+				{
+					filtervalue: '1',
+					operator: 'eq',
+					keepmiss: false,
+					columns: 'chr'
+				}
+			]
 		}
-	]
+	};
 };
+
+const state = getDefaultState();
+// filters: {
+// 	regular: [
+// 		{
+// 			filtervalue: '1',
+// 			operator: 'eq',
+// 			keepmiss: false,
+// 			columns: 'chr'
+// 		}
+// 	]
+// }
+// };
 
 const getters = {
 	filters: (state) => {
@@ -23,6 +41,9 @@ const getters = {
 const actions = {
 	UPDATE_STORE({ commit }, filters) {
 		commit('UPDATE_FILTERS', { filters });
+	},
+	resetFilters({ commit }) {
+		commit('resetState');
 	}
 };
 
@@ -30,6 +51,9 @@ const mutations = {
 	UPDATE_FILTERS(state, filters) {
 		state.filters = filters;
 		console.log('Updated filter state');
+	},
+	resetState(state) {
+		Object.assign(state, getDefaultState());
 	}
 };
 

@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>Samples:</h1>
-        <p>Click a row to start enterpreting that sample:</p>
+        <p>Click a row to start interpreting that sample:</p>
             <div class="container" id="login">
             <div class="row row justify-content-center">
                 <div class="col-md-10">

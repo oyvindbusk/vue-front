@@ -417,10 +417,13 @@ routes:
     # Query backend api for the samples:
     let variants = parseJson("""{"variants": 
       [
-        {"chr": "1", "pos": 100, "ref": "c", "alt": "a",  "HGMD": "DM", "comment": "Dette er en kommentar","class": ""},
-        {"chr": "1", "pos": 300, "ref": "a", "alt": "tt", "HGMD": "DM", "comment": "c", "class": "3"},
-        {"chr": "2", "pos": 200, "ref": "g", "alt": "t",  "HGMD": "DM", "comment": "c", "class": ""},
-        {"chr": "X", "pos": 10, "ref": "c", "alt": "c",   "HGMD": "DM", "comment": "", "class": ""},
+        {"chr": "1", "pos": 100, "ref": "c", "alt": "a" , "zyg": "0/1", "gene": "SETX", "gnomAD": "0.01", "HGMD": "DM", "comment": "Dette er en kommentar","class": ""},
+        {"chr": "2", "pos": 300, "ref": "a", "alt": "tt", "zyg": "0/1", "gene": "GJB1", "gnomAD": "0.1", "HGMD": "DM", "comment": "c", "class": "3"},
+        {"chr": "2", "pos": 200, "ref": "g", "alt": "t" , "zyg": "0/1", "gene": "GJB1", "gnomAD": "0.1", "HGMD": "DM", "comment": "c", "class": ""},
+        {"chr": "2", "pos": 200, "ref": "g", "alt": "t" , "zyg": "0/1", "gene": "PMP22", "gnomAD": "", "HGMD": "", "comment": "", "class": ""},
+        {"chr": "6", "pos": 200, "ref": "g", "alt": "t" , "zyg": "0/1", "gene": "MMA", "gnomAD": "0.01", "HGMD": "", "comment": "", "class": ""},
+        {"chr": "10", "pos": 200, "ref": "g", "alt": "t" , "zyg": "1/1", "gene": "MARS1", "gnomAD": "0.1", "HGMD": "", "comment": "", "class": ""},
+        {"chr": "X", "pos": 10, "ref": "c", "alt": "c"  , "zyg": "1/1", "gene": "SOD1", "gnomAD": "0.001", "HGMD": "DM", "comment": "", "class": ""},
       ],
       "sample": "$#",
       "sampleComment": ""

@@ -1,11 +1,15 @@
 <template>
-    <div id="app">
-            <form>
+    <div id="app" class="container">
+            
       <h1>Filters</h1>
+       <b-tabs content-class="mt-3">
+        <b-tab title="Regular" active @click="clearfilters()">
+          
+          <form>
       <div class="filters">
         <div
           class="form-row"
-          v-for="(experience, index) in filters"
+          v-for="(experience, index) in filters.regular"
           :key="index"
         >
           <div class="form-group col-md-3">
@@ -48,31 +52,49 @@
           </div>
         </div>
       </div>
+      
 
       <div class="form-group">
-        <button @click="addfilters" type="button" class="btn btn-secondary">
+        <b-button-group>
+        <button @click="addfilters" type="button" class="btn btn-primary">
           Add filters
         </button>
-        <p></p>
-        <button @click="removefilter" type="button" class="btn btn-secondary">
+        <button @click="removefilter" type="button" class="btn btn-primary">
           Remove filters
         </button>
-        <p></p>
-        <button @click="applyfilter" type="button" class="btn btn-secondary">
+        <button @click="applyfilter" type="button" class="btn btn-primary">
           Apply filters
         </button>
-
+          </b-button-group>
+          <br>
+        
+      
       </div>
+      
         {{ filters }}
-      <hr />
     </form>
-
-
-
-
-
-
-
+        </b-tab>
+        <b-tab title="FilterChains">
+          <p>
+          Filterchains are filters that are run in combination but with different modes of inheritance. This is so you can specify different frequency cutoffs for AD and AR. In addition, you have the opportunity to specify a tolerance for  a higher freq if a variant is present in say HGMD or clinvar.
+          The chain is an object with childs AD & AR and other. The filters defined inside AD or other are apllied as is, and the filters defined within AR is applied as is and then only variants which are either homozygous or there exist other variants on the same gene are RTCIceCandidatePairChangedEvent. The Filter Keys are appended as badges in the table.
+          standardFilter are defined in the config.js file and can be used as an example.
+          </p>
+          <form>
+            <div class="form-group col-md-3">
+            <label>Filter Chains</label>
+            <b-form-select
+            v-model="selectedchainfilter"
+            :options="Object.keys(filterchains)"
+            @change="addchainfilter"
+            ></b-form-select>
+          </div>
+          </form>
+          {{selectedchainfilter}}
+          {{filterchains[selectedchainfilter]}}
+        </b-tab>
+    
+      </b-tabs>
 
 
     </div>
@@ -87,11 +109,17 @@ export default {
     return {
       filteroptions: config.filteroptions,
       columnoptions: config.columnoptions,
+      filterchains: config.filterChains,
+      selectedchainfilter: "",
     };
   },
   methods: {
+    addchainfilter() {
+      console.log(this.filterchains[this.selectedchainfilter])
+      this.$store.commit("UPDATE_FILTERS", this.filterchains[this.selectedchainfilter]);
+    },
     addfilters() {
-      this.filters.push({
+      this.filters.regular.push({
         filtervalue: "",
         operator: "",
         keepmiss: false,
@@ -100,11 +128,18 @@ export default {
       this.$store.commit("UPDATE_FILTERS", this.filters);
     },
     removefilter() {
-        this.filters.pop();
+        this.filters.regular.pop();
         this.$store.commit("UPDATE_FILTERS", this.filters);
     },
     applyfilter() {
         this.$store.commit("UPDATE_FILTERS", this.filters);
+    },
+    clearfilters() {
+      console.log("clearfilters")
+      this.$store.dispatch("resetFilters")
+      
+      
+
     }
   },
   computed: {

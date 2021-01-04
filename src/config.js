@@ -5,6 +5,18 @@ config = {
 	$signout_url: function() {
 		return this.$backend_url + '/newlogout';
 	},
+	initfilters: {
+		filters: {
+			regular: [
+				{
+					filtervalue: '1',
+					operator: 'eq',
+					keepmiss: false,
+					columns: 'chr'
+				}
+			]
+		}
+	},
 	filteroptions: [
 		{ value: null, text: 'Please select an option' },
 		{ value: 'eq', text: 'Equal to' },
@@ -21,6 +33,9 @@ config = {
 		{ value: 'pos', text: 'Pos' },
 		{ value: 'ref', text: 'Ref' },
 		{ value: 'alt', text: 'Alt' },
+		{ value: 'zyg', text: 'Zygosity' },
+		{ value: 'gene', text: 'Gene Name' },
+		{ value: 'gnomAD', text: 'gnomAD' },
 		{ value: 'HGMD', text: 'HGMD' },
 		{ value: 'class', text: 'Class' },
 		{ value: 'comment', text: 'Comment' }
@@ -49,6 +64,24 @@ config = {
 			label: 'Alt Allele',
 			sortable: true,
 			type: 'string'
+		},
+		{
+			key: 'zyg',
+			label: 'Zygosity',
+			sortable: true,
+			type: 'string'
+		},
+		{
+			key: 'gene',
+			label: 'Gene Name',
+			sortable: true,
+			type: 'string'
+		},
+		{
+			key: 'gnomAD',
+			label: 'gnomAD freq',
+			sortable: true,
+			type: 'float'
 		},
 		{
 			key: 'HGMD',
@@ -88,7 +121,71 @@ config = {
 		{ value: 4, text: '4' },
 		{ value: 5, text: '5' },
 		{ value: 'U', text: 'U' }
-	]
+	],
+	filterChains: {
+		standardFilter: {
+			AD: [
+				{
+					filtervalue: '0.01',
+					operator: 'lt',
+					keepmiss: true,
+					columns: 'gnomAD'
+				}
+			],
+			AR: [
+				{
+					filtervalue: '0.1',
+					operator: 'lt',
+					keepmiss: true,
+					columns: 'gnomAD'
+				},
+				{
+					filtervalue: '1',
+					operator: 'eq',
+					keepmiss: true,
+					columns: 'chr'
+				}
+			],
+			HGMD: [
+				{
+					filtervalue: '',
+					operator: 'neq',
+					keepmiss: false,
+					columns: 'HGMD'
+				}
+			]
+		},
+		otherFilter: {
+			AD: [
+				{
+					filtervalue: '1',
+					operator: 'eq',
+					keepmiss: false,
+					columns: 'chr'
+				},
+				{
+					filtervalue: '1',
+					operator: 'eq',
+					keepmiss: false,
+					columns: 'chr'
+				}
+			],
+			AR: [
+				{
+					filtervalue: '1',
+					operator: 'eq',
+					keepmiss: false,
+					columns: 'chr'
+				},
+				{
+					filtervalue: '1',
+					operator: 'eq',
+					keepmiss: false,
+					columns: 'chr'
+				}
+			]
+		}
+	}
 };
 
 export { config };
