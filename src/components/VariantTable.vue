@@ -1,11 +1,14 @@
 <template>
   <div id="app" class="container">
     <h1>{{username}}</h1>
-    <!-- <b-tabs content-class="mt-3">
-        <b-tab title="Regular" active >
-          <b-tab title="Blra" active >
-        </b-tab>
-    </b-tabs> -->
+    <b-tabs v-if="Object.keys(this.filters).length > 1" v-model="active_tab" content-class="mt-3">
+      <!-- This is shown if filterchain is present. -->
+        <b-tab v-for="(filter, index) in filters" :key="index" :title="index" active ></b-tab>
+    </b-tabs>
+    
+
+
+
 <div v-if="!loading">
     <b-table
       ref="table"
@@ -132,7 +135,9 @@ export default {
       totalRows: 1,
       filter: "true",
       filtersapplied: false,
-      filterOn: ["visibility"]
+      filterOn: ["visibility"],
+      active_tab:0
+      
       
     };
   },
@@ -142,6 +147,24 @@ export default {
       this.selectedItems = line;
     },
 
+
+
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+
     filterVariants: function () {
       this.filtersapplied = true
       const filterd = this.variants.map(helper_funcs.set_vis_false); // Set all variants hidden
@@ -150,7 +173,7 @@ export default {
       console.log(Object.keys(this.filters))
       if (Object.keys(this.filters)[0]  === "regular") {
           Array.prototype.forEach.call(this.filters.regular, (filter) => {
-          Array.prototype.push.apply(filterd, this.variants.map(helper_funcs.filter_variants, { filter: filter })
+          Array.prototype.push.apply(filterd, this.variants.map(helper_funcs.filter_variants, { filter: filter})
         );
       });
       const uniq = new Set(filterd.map((e) => JSON.stringify(e))); // Remove dups are necescary because of way filters are structured.
@@ -161,20 +184,25 @@ export default {
         // For each filter
         // filter and add key as a separate badge in the actions col
         // If Filter has inheritance: "AR" Then do something with that
-
         console.log(Object.keys(this.filters))
         for (const [key, value] of Object.entries(this.filters)) {
+
           console.log(`${key}: ${value}`);
-              Array.prototype.forEach.call(this.filters[key], (filter) => {
-              Array.prototype.push.apply(filterd, this.variants.map(helper_funcs.filter_variants, { filter: filter })
-            );
-          });
+            Array.prototype.forEach.call(this.filters[key], (filter) => {
+              Array.prototype.push.apply(filterd, this.variants.map(helper_funcs.filter_variants, { filter: filter, inheritance: key})
+              );
+            });
+          
+          // Set correct inheritance mode for the variants:
+          // for each variant in res if visibility is true -> Add key
           const uniq = new Set(filterd.map((e) => JSON.stringify(e))); // Remove dups are necescary because of way filters are structured.
           const res = Array.from(uniq).map((e) => JSON.parse(e));
+    
+        this.$emit("update:variants", res); // two way data binding to the variants-view
           
-          this.$emit("update:variants", res); // two way data binding to the variants-view
         }
-       
+        
+
        
 
       
@@ -207,8 +235,9 @@ export default {
       this.filtersapplied = false
       this.$emit(
         "update:variants",
-        this.variants.map(helper_funcs.set_vis_true)
-      );
+        this.variants.map(helper_funcs.set_vis_true).map(helper_funcs.set_inheritance_clear)
+      )
+      
     },
     info(item, index, button) {
       this.selectedRowIndex = index;

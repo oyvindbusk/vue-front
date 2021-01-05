@@ -418,7 +418,7 @@ routes:
     let variants = parseJson("""{"variants": 
       [
         {"chr": "1", "pos": 100, "ref": "c", "alt": "a" , "zyg": "0/1", "gene": "SETX", "gnomAD": "0.01", "HGMD": "DM", "comment": "Dette er en kommentar","class": ""},
-        {"chr": "2", "pos": 300, "ref": "a", "alt": "tt", "zyg": "0/1", "gene": "GJB1", "gnomAD": "0.1", "HGMD": "DM", "comment": "c", "class": "3"},
+        {"chr": "2", "pos": 300, "ref": "a", "alt": "tt", "zyg": "0/1", "gene": "GJB1", "gnomAD": "0.1", "HGMD": "", "comment": "", "class": ""},
         {"chr": "2", "pos": 200, "ref": "g", "alt": "t" , "zyg": "0/1", "gene": "GJB1", "gnomAD": "0.1", "HGMD": "DM", "comment": "c", "class": ""},
         {"chr": "2", "pos": 200, "ref": "g", "alt": "t" , "zyg": "0/1", "gene": "PMP22", "gnomAD": "", "HGMD": "", "comment": "", "class": ""},
         {"chr": "6", "pos": 200, "ref": "g", "alt": "t" , "zyg": "0/1", "gene": "MMA", "gnomAD": "0.01", "HGMD": "", "comment": "", "class": ""},

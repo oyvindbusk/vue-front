@@ -112,6 +112,12 @@ config = {
 			label: 'Inheritance Mode',
 			sortable: true,
 			type: 'string'
+		},
+		{
+			key: 'visibility',
+			label: 'visibility',
+			sortable: true,
+			type: 'string'
 		}
 	],
 	testhtml: `
@@ -168,21 +174,9 @@ config = {
 					operator: 'eq',
 					keepmiss: false,
 					columns: 'chr'
-				},
-				{
-					filtervalue: '1',
-					operator: 'eq',
-					keepmiss: false,
-					columns: 'chr'
 				}
 			],
 			AR: [
-				{
-					filtervalue: '1',
-					operator: 'eq',
-					keepmiss: false,
-					columns: 'chr'
-				},
 				{
 					filtervalue: '1',
 					operator: 'eq',

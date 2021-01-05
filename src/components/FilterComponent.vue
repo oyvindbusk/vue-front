@@ -74,7 +74,7 @@
         {{ filters }}
     </form>
         </b-tab>
-        <b-tab title="FilterChains">
+        <b-tab title="FilterChains" @click="clearfilters()">
           <p>
           Filterchains are filters that are run in combination but with different modes of inheritance. This is so you can specify different frequency cutoffs for AD and AR. In addition, you have the opportunity to specify a tolerance for  a higher freq if a variant is present in say HGMD or clinvar.
           The chain is an object with childs AD & AR and other. The filters defined inside AD or other are apllied as is, and the filters defined within AR is applied as is and then only variants which are either homozygous or there exist other variants on the same gene are RTCIceCandidatePairChangedEvent. The Filter Keys are appended as badges in the table.
@@ -135,8 +135,9 @@ export default {
         this.$store.commit("UPDATE_FILTERS", this.filters);
     },
     clearfilters() {
-      console.log("clearfilters")
+      console.log("Clearing Filters")
       this.$store.dispatch("resetFilters")
+      this.selectedchainfilter = null
       
       
 

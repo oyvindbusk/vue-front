@@ -8,6 +8,7 @@
         <li>Add gene name gnomad and zyg to selectable drop down <span class="badge badge-secondary">Done</span></li>
         <li>Move filter function out of the variantTable view to the helpers.js file</li>
         <li>Make working filter chain example</li>
+        <li>Clean up the filter function in the helpers.js</li>
         <li>Add box to select filterchains<span class="badge badge-secondary">Done</span></li>
         <li>Select columns to filter on from vartablefields insted of columnoptions (both in config)</li>
         <li>Add filterchains to config-file<span class="badge badge-secondary">Done</span></li>
