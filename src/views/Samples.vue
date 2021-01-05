@@ -24,7 +24,7 @@ export default {
             selectedSample: "",
             fields: [
           {
-            key: 'sampleID',
+            key: 'sample_id',
             label: 'Sample ID',
             sortable: true
           },
@@ -47,12 +47,12 @@ export default {
             this.$http.get(baseURI, {withCredentials: true})
             .then(response => response.data)
             .then(data => {
-                this.items = data.items;
+                this.items = data.data;
             })
         },
         // To get selected items in table - this should be added as a mixin
         rowSelected(items) {
-        this.selectedSample = items[0].sampleID
+        this.selectedSample = items[0].sample_id
       },
         },
         watch: {

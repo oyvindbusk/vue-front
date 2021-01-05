@@ -51,6 +51,7 @@ export default {
   },
   computed: {
     // Two way data binding between parent and child component
+    
     variants: {
       get() {
         return this.$store.getters.variants;
@@ -71,10 +72,13 @@ export default {
     },
   },
   created: function () {
-    this.$store.dispatch("initVariantStore");
+  
+    this.$store.dispatch("initVariantStore" , this.$route.params.id);
+    
   },
   data() {
     return {
+      
       sample_comment: "",
       loading: true,
     };
