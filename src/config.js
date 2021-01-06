@@ -1,7 +1,7 @@
 let config;
 
 config = {
-	$backend_url: 'http://localhost:5000',
+	$backend_url: 'http://172.16.0.3:5000',
 	$signout_url: function() {
 		return this.$backend_url + '/newlogout';
 	},
@@ -54,31 +54,31 @@ config = {
 			type: 'int'
 		},
 		{
-			key: 'ref',
+			key: 'refn',
 			label: 'Ref Allele',
 			sortable: true,
 			type: 'string'
 		},
 		{
-			key: 'alt',
+			key: 'altn',
 			label: 'Alt Allele',
 			sortable: true,
 			type: 'string'
 		},
 		{
-			key: 'zyg',
+			key: 'gt',
 			label: 'Zygosity',
 			sortable: true,
 			type: 'string'
 		},
 		{
-			key: 'gene',
+			key: 'geneName',
 			label: 'Gene Name',
 			sortable: true,
 			type: 'string'
 		},
 		{
-			key: 'gnomAD',
+			key: 'gn_af',
 			label: 'gnomAD freq',
 			sortable: true,
 			type: 'float'
