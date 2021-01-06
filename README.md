@@ -6,6 +6,7 @@ sandbox vue frontend with login, navbar and vuex
 * ### DEPRECATED when using varbrowser   Switch from localhost to 172.16.0.3 in line 428 + 411 in vb_frontend.nim
 * Line 5 in config.js localhost <=> 172.16.0.3
 * Update the CORS-headers in the GET-requests in vb_server.nim
+* Edit line 48 in src/backendpkg/config.nim cfg.minio_host   = "0.0.0.0:9000" => 172.16.0.3
 * Spin up docker containers (from path = ./backend)
 ```sh
 docker run \
@@ -56,3 +57,17 @@ npm run serve
 
 ### OBS !! 
 * Remember to add route to the login route to rereoute back to home
+
+
+# TO install package igv or igv-vue:
+# npm using https for git
+git config --global url."https://github.com/".insteadOf git@github.com:
+git config --global url."https://".insteadOf git://
+
+# npm using git for https
+git config --global url."git@github.com:".insteadOf https://github.com/
+git config --global url."git://".insteadOf https://
+
+# Revert 
+git config --global --unset-all url.https://github.com/.insteadof
+git config --global --unset-all url.https://.insteadof
