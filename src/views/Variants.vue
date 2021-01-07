@@ -25,9 +25,10 @@
 
 
     <hr />
+    <igv-component/>
     <variant-table :variants.sync="variants" :loading="loading" :fields="fields" />
 
-   <br>
+    <br>
     <hr />
     <button @click="routeReport" type="button" class="btn btn-secondary">
       Go to report
@@ -42,12 +43,18 @@
 <script>
 import FilterComponent from "../components/FilterComponent.vue";
 import VariantTable from "../components/VariantTable";
+import IgvComponent from "../components/IgvComponent";
+
 import { config } from "../config.js";
+
+
+
 export default {
   name: "variants",
   components: {
     FilterComponent,
     VariantTable,
+    IgvComponent,
   },
   computed: {
     // Two way data binding between parent and child component

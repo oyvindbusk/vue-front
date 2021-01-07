@@ -1,13 +1,13 @@
 <template>
   <div id="app" class="container">
-    <h1>{{username}}</h1>
+
     <b-tabs v-if="Object.keys(this.filters).length > 1" v-model="active_tab" content-class="mt-3">
       <!-- This is shown if filterchain is present. -->
         <b-tab v-for="(filter, index) in filters" :key="index" :title="index" active ></b-tab>
     </b-tabs>
     
 
-
+{{selectedItems}}
 
 <div v-if="!loading">
     <b-table
@@ -36,8 +36,9 @@
           @click="info(row.item, row.index, $event.target)"
           class="mr-1"
         >
-          Info modal
+          Info
         </b-button>
+
       </template>
     </b-table>
 
@@ -111,6 +112,8 @@ import { config } from "../config.js";
 import helper_funcs from "@/helpers";
 import { mapGetters } from "vuex";
 
+
+
 export default {
   name: "varianttable",
   props: ["variants", "loading", "fields"],
@@ -136,7 +139,7 @@ export default {
       filter: "true",
       filtersapplied: false,
       filterOn: ["visibility"],
-      active_tab:0
+      active_tab: 0
       
       
     };
@@ -294,6 +297,8 @@ export default {
     setChanged() {
       this.variants[this.selectedRowIndex].changed = true;
     },
+  
+
   },
   computed: {
     ...mapGetters(["filters"]),

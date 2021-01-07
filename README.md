@@ -5,7 +5,8 @@ sandbox vue frontend with login, navbar and vuex
 * Switch vb_tool_test.conf in backend - switch from localhost to http://172.16.0.3 on line 2 & 8
 * ### DEPRECATED when using varbrowser   Switch from localhost to 172.16.0.3 in line 428 + 411 in vb_frontend.nim
 * Line 5 in config.js localhost <=> 172.16.0.3
-* Update the CORS-headers in the GET-requests in vb_server.nim
+* Line 39 in config.nim
+* Line 23 in vb_test_tool.conf
 * Edit line 48 in src/backendpkg/config.nim cfg.minio_host   = "0.0.0.0:9000" => 172.16.0.3
 * Spin up docker containers (from path = ./backend)
 ```sh
