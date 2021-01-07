@@ -3,7 +3,8 @@
     <b-navbar-brand to="/">Variant browser</b-navbar-brand>
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
      <b-navbar-nav>
-        <b-nav-item to="/samples">Samples</b-nav-item>          
+        <b-nav-item to="/samples">Samples</b-nav-item>
+        <b-nav-item to="/variants">Variants</b-nav-item>          
           <b-nav-item-dropdown right>
           <!-- Using 'button-content' slot -->
           <template #button-content>

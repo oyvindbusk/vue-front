@@ -20,12 +20,12 @@
         </b-col>
       </b-row>
     </b-container>
- <hr />
+    <hr />
     <filter-component />
 
 
     <hr />
-    <variant-table :variants.sync="variants" :loading="loading" />
+    <variant-table :variants.sync="variants" :loading="loading" :fields="fields" />
 
    <br>
     <hr />
@@ -42,7 +42,7 @@
 <script>
 import FilterComponent from "../components/FilterComponent.vue";
 import VariantTable from "../components/VariantTable";
-
+import { config } from "../config.js";
 export default {
   name: "variants",
   components: {
@@ -78,7 +78,7 @@ export default {
   },
   data() {
     return {
-      
+      fields: config.vartablefields,
       sample_comment: "",
       loading: true,
     };

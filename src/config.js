@@ -120,6 +120,93 @@ config = {
 			type: 'string'
 		}
 	],
+	allvartablefields: [
+		{
+			key: 'chr',
+			label: 'Chromosome',
+			sortable: true,
+			type: 'string'
+		},
+		{
+			key: 'pos',
+			label: 'Position',
+			sortable: true,
+			type: 'int'
+		},
+		{
+			key: 'refn',
+			label: 'Ref Allele',
+			sortable: true,
+			type: 'string'
+		},
+		{
+			key: 'altn',
+			label: 'Alt Allele',
+			sortable: true,
+			type: 'string'
+		},
+		{
+			key: 'gt',
+			label: 'Zygosity',
+			sortable: true,
+			type: 'string'
+		},
+		{
+			key: 'geneName',
+			label: 'Gene Name',
+			sortable: true,
+			type: 'string'
+		},
+		{
+			key: 'gn_af',
+			label: 'gnomAD freq',
+			sortable: true,
+			type: 'float'
+		},
+		{
+			key: 'HGMD',
+			label: 'HGMD',
+			sortable: true,
+			type: 'string'
+		},
+		{
+			key: 'class',
+			label: 'class',
+			sortable: true,
+			type: 'string'
+		},
+		{
+			key: 'hets',
+			label: 'hets',
+			sortable: true,
+			type: 'int'
+		},
+		{
+			key: 'homs',
+			label: 'homs',
+			sortable: true,
+			type: 'int'
+		},
+		{
+			key: 'comments',
+			label: 'comment',
+			sortable: true,
+			type: 'string'
+		},
+		{
+			key: 'actions',
+			label: 'actions',
+			sortable: true,
+			type: 'string'
+		},
+
+	],
+
+
+
+
+
+
 	testhtml: `
 				<div>
 					<span>Some HTML here</span>

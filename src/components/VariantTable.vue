@@ -41,7 +41,6 @@
       </template>
     </b-table>
 
-    {{ selectedItems }}
     <br />
   <b-button-group>
     <button v-on:click="filterVariants" id="button" class="btn btn-success">
@@ -102,6 +101,7 @@
       </b-container>
     </b-modal>
     <br />
+    
     </div>
   </div>
 </template>
@@ -113,17 +113,17 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "varianttable",
-  props: ["variants", "loading"],
+  props: ["variants", "loading", "fields"],
   created: function () {
     // Get username
     this.$store.dispatch("initUserStore");
   },
   data() {
     return {
+      // fields: config.vartablefields,
       username: this.$store.getters.username,
       selectedItems: {},
       selectedRowIndex: 0,
-      fields: config.vartablefields,
       small: true,
       infoModal: {
         id: "info-modal",

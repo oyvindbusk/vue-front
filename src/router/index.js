@@ -6,6 +6,7 @@ import Home from '../views/Home.vue';
 import Samples from '../views/Samples.vue';
 import Variants from '../views/Variants.vue';
 import Report from '../views/Report.vue';
+import AllVariants from '../views/AllVariants.vue';
 
 const routes = [
 	{
@@ -17,6 +18,12 @@ const routes = [
 		path: '/variants/:id',
 		name: 'Variants',
 		component: Variants,
+		props: true
+	},
+	{
+		path: '/variants',
+		name: 'AllVariants',
+		component: AllVariants,
 		props: true
 	},
 	{

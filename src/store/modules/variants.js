@@ -13,15 +13,30 @@ const getters = {
 
 const actions = {
 	initVariantStore: ({ commit }, sID) => {
-		axios.get(config.$backend_url + '/newVariants/' + sID, { withCredentials: true }).then((response) => {
-			var variants = response.data.variants;
-			variants.forEach((variant, index) => {
-				variants[index]['changed'] = false;
-				variants[index]['visibility'] = true;
-				variants[index]['inheritance'] = '';
+
+		if (sID !== 'empty') {
+			axios.get(config.$backend_url + '/newVariants/' + sID, { withCredentials: true }).then((response) => {
+				var variants = response.data.variants;
+				variants.forEach((variant, index) => {
+					variants[index]['changed'] = false;
+					variants[index]['visibility'] = true;
+					variants[index]['inheritance'] = '';
+				});
+				commit('SET_STORE', Object.values(variants));
 			});
-			commit('SET_STORE', Object.values(variants));
-		});
+		} else {
+			commit('SET_STORE', Object.values({}));
+
+		}
+	
+
+
+
+
+
+
+
+
 	}
 };
 
