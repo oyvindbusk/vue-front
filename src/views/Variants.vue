@@ -23,10 +23,9 @@
     <hr />
     <filter-component />
 
-
     <hr />
-    <igv-component/>
-    <variant-table :variants.sync="variants" :loading="loading" :fields="fields" />
+    <igv-component v-if="selecteditems" :selecteditems="selecteditems"/>
+    <variant-table :variants.sync="variants" :loading="loading" :fields="fields" :selecteditems.sync="selecteditems" />
 
     <br>
     <hr />
@@ -55,6 +54,7 @@ export default {
     FilterComponent,
     VariantTable,
     IgvComponent,
+    
   },
   computed: {
     // Two way data binding between parent and child component
@@ -88,6 +88,7 @@ export default {
       fields: config.vartablefields,
       sample_comment: "",
       loading: true,
+      selecteditems: {}
     };
   },
   methods: {

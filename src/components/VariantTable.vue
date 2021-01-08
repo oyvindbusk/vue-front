@@ -7,7 +7,6 @@
     </b-tabs>
     
 
-{{selectedItems}}
 
 <div v-if="!loading">
     <b-table
@@ -75,10 +74,7 @@
 
             <b-form-textarea
               v-model="variants[selectedRowIndex].comment"
-              @keyup="
-                $emit('update:variants', variants);
-                setChanged();
-              "
+              @keyup="$emit('update:variants', variants);setChanged();"
               id="textarea"
               size="sm"
               placeholder="Comment here: "
@@ -116,7 +112,7 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "varianttable",
-  props: ["variants", "loading", "fields"],
+  props: ["variants", "loading", "fields", "selecteditems"],
   created: function () {
     // Get username
     this.$store.dispatch("initUserStore");
@@ -125,7 +121,7 @@ export default {
     return {
       // fields: config.vartablefields,
       username: this.$store.getters.username,
-      selectedItems: {},
+      //selectedItems: {},
       selectedRowIndex: 0,
       small: true,
       infoModal: {
@@ -147,7 +143,8 @@ export default {
   methods: {
     rowSelected(line) {
       // Get the selected row in the table
-      this.selectedItems = line;
+      this.$emit("update:selecteditems", line);
+      // this.selecteditems = line;
     },
 
 
@@ -265,8 +262,8 @@ export default {
       // Check to see if currently selected variant is changed (altered class or comment):
       if (this.variants[this.selectedRowIndex].changed === true) {
 
-      const variant = this.variants[this.selectedRowIndex];
-      const baseURI = config.$backend_url + "/newpost";
+     
+      const baseURI = config.$backend_url + "/api/postintepret";
       const date = new Date().toJSON().slice(0,10).replace(/-/g,'/');
       const f = ( this.filtersapplied == true ) ?  this.filters :  "no filters applied"
 
@@ -274,9 +271,10 @@ export default {
       this.$http
         .post(
           baseURI,
-          { variant: variant,
+          { variant: this.variants[this.selectedRowIndex],
           user: this.$store.getters.username,
           date: date,
+          sampleID: this.$route.params.id,
           filters: f},
           {
             withCredentials: true,
@@ -297,6 +295,7 @@ export default {
     setChanged() {
       this.variants[this.selectedRowIndex].changed = true;
     },
+
   
 
   },
@@ -304,6 +303,7 @@ export default {
     ...mapGetters(["filters"]),
   },
   mounted() {
+
     
   },
 };
