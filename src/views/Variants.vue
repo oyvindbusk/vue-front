@@ -16,6 +16,7 @@
             v-model="sample_comment"
             size="sm"
             placeholder="Comment here: "
+            @blur="setChanged()"
           ></b-form-textarea>
         </b-col>
       </b-row>
@@ -94,6 +95,10 @@ export default {
   methods: {
     routeReport: function () {
       this.$router.push({ name: "Report" });
+    },
+    setChanged() {
+      this.variants[this.selectedRowIndex].changed = true;
+      console.log("test")
     },
   },
 };

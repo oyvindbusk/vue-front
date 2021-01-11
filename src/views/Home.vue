@@ -5,10 +5,10 @@
         <login v-show="!loggedInStatus"/>
         <hr>
         <h3>TODOLIST:</h3>
+        <li>Sett opp logic for å poste fra variants-view</li>
+        <li>SEtt opp logic for å sjekke om samplecomment finnes og sende den med datavariants</li>
         <li>Sett opp en egen knapp og post for å signe off på prøver som er ferdige</li>
-        <li>Set up a post-request to enter data into db  <span class="badge badge-secondary">Done</span></li>
-        <li>Set up logic to select the data to send to db (the changed comments/classes)  <span class="badge badge-secondary">Done</span></li>
-        <li>Move filter function out of the variantTable view to the helpers.js file</li>
+                <li>Move filter function out of the variantTable view to the helpers.js file</li>
         <li>Clean up the filter function in the helpers.js</li>
         <li>Select columns to filter on from vartablefields insted of columnoptions (both in config)</li>
         <li>Importer en metode fra en mixin</li>
@@ -17,9 +17,11 @@
         <li>Adding export to table</li>
         <br>
         <h3>Done:</h3>
-         <li>Add sample to the variant query <span class="badge badge-secondary">Done</span></li>
-         <li>Embedding igv.js <span class="badge badge-secondary">Done</span></li>
-         <li>test with example igv.js browser <span class="badge badge-secondary">Done</span></li>
+        <li>Set up a post-request to enter data into db  <span class="badge badge-secondary">Done</span></li>
+        <li>Set up logic to select the data to send to db (the changed comments/classes)  <span class="badge badge-secondary">Done</span></li>
+        <li>Add sample to the variant query <span class="badge badge-secondary">Done</span></li>
+        <li>Embedding igv.js <span class="badge badge-secondary">Done</span></li>
+        <li>test with example igv.js browser <span class="badge badge-secondary">Done</span></li>
         <li>Add filterchains to config-file <span class="badge badge-secondary">Done</span></li>
         <li>Add box to select filterchains <span class="badge badge-secondary">Done</span></li>
         <li>Make working filter chain example <span class="badge badge-secondary">Done</span></li>

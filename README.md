@@ -8,6 +8,15 @@ sandbox vue frontend with login, navbar and vuex
 * Line 39 in config.nim
 * Line 23 in vb_test_tool.conf
 * Edit line 48 in src/backendpkg/config.nim cfg.minio_host   = "0.0.0.0:9000" => 172.16.0.3
+* Remove old data:
+```sh
+docker stop $(docker ps -aq)
+docker rm $(docker ps -aq)
+
+docker volume rm $(docker volume ls -q)
+
+```
+
 * Spin up docker containers (from path = ./backend)
 ```sh
 docker run \
@@ -44,8 +53,8 @@ npm run serve
 ```sh
 ./vb_tool --initsamplesdb
 ./vb_tool --initannotdb
-./vb_tool -v=testfiles/7_50.gnomAD.clinvar.snpEff.vcf --samples --sample_id=7_50 --snpeff --clinvar --gnomad --bam=./testfiles/bams/7_50_recal_subset.bam --vcf=./testfiles/7_50.gnomAD.clinvar.snpEff.phenotype.vcf
-./vb_tool -v=testfiles/8_50.gnomAD.clinvar.snpEff.vcf --samples --sample_id=8_50 --snpeff --clinvar --gnomad --bam=./testfiles/bams/8_50_recal_subset.bam --vcf=./testfiles/8_50.gnomAD.clinvar.snpEff.phenotype.vcf
+./vb_tool -v=testfiles/7_50.gnomAD.clinvar.snpEff.phenotype.vcf --samples --sample_id=7_50 --phenotypes --snpeff --clinvar --gnomad --bam=./testfiles/bams/7_50_recal_subset.bam --vcf=./testfiles/7_50.gnomAD.clinvar.snpEff.phenotype.vcf
+./vb_tool -v=testfiles/8_50.gnomAD.clinvar.snpEff.phenotype.vcf --samples --sample_id=8_50 --phenotypes --snpeff --clinvar --gnomad --bam=./testfiles/bams/8_50_recal_subset.bam --vcf=./testfiles/8_50.gnomAD.clinvar.snpEff.phenotype.vcf
 ```
 # Start server:
 ```sh

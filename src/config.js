@@ -206,14 +206,14 @@ config = {
 					<span>Some HTML here</span>
 				</div>
 			  `,
-	classOptions: [
+	classOptions: [ // Obs - dont use 0 (it is reserved)
 		{ value: null, text: 'Please select an option' },
 		{ value: 1, text: '1' },
 		{ value: 2, text: '2' },
 		{ value: 3, text: '3' },
 		{ value: 4, text: '4' },
 		{ value: 5, text: '5' },
-		{ value: 'U', text: 'U' }
+		{ value: '6', text: '6' }
 	],
 	filterChains: {
 		standardFilter: {
