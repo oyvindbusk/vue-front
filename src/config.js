@@ -1,7 +1,7 @@
 let config;
 
 config = {
-	$backend_url: 'http://172.16.0.3:5000',
+	$backend_url: 'http://localhost:5000',
 	$signout_url: function() {
 		return this.$backend_url + '/newlogout';
 	},
@@ -188,8 +188,14 @@ config = {
 			type: 'int'
 		},
 		{
-			key: 'comment',
-			label: 'comment',
+			key: 'mastercomment',
+			label: 'mastercomment',
+			sortable: true,
+			type: 'string'
+		},
+		{
+			key: 'masterclass',
+			label: 'masterclass',
 			sortable: true,
 			type: 'string'
 		},
@@ -206,7 +212,8 @@ config = {
 					<span>Some HTML here</span>
 				</div>
 			  `,
-	classOptions: [ // Obs - dont use 0 (it is reserved)
+	classOptions: [
+		// Obs - dont use 0 (it is reserved)
 		{ value: null, text: 'Please select an option' },
 		{ value: 1, text: '1' },
 		{ value: 2, text: '2' },

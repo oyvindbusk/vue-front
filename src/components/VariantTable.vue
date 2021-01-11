@@ -15,6 +15,8 @@
       hover
       outlined
       selectable
+      
+      
       :filter="filter"
       :filter-included-fields="filterOn"
       select-mode="single"
@@ -135,7 +137,10 @@ export default {
       filter: "true",
       filtersapplied: false,
       filterOn: ["visibility"],
-      active_tab: 0
+      currentPage: 1,
+      active_tab: 0,
+      perPage: 5,
+      pageOptions: [5, 10, 15, { value: 100, text: "Show a lot" }],
       
       
     };
@@ -261,12 +266,11 @@ export default {
       
       // Check to see if currently selected variant is changed (altered class or comment):
       if (this.variants[this.selectedRowIndex].changed === true) {
-
-     
       const baseURI = config.$backend_url + "/api/postintepret";
       const date = new Date().toJSON().slice(0,10).replace(/-/g,'/');
       const f = ( this.filtersapplied == true ) ?  this.filters :  "no filters applied"
-
+      const sampleID = typeof this.$route.params.id !== 'undefined' ? this.$route.params.id :"allvariants"
+      
 
       this.$http
         .post(
@@ -274,7 +278,7 @@ export default {
           { variant: this.variants[this.selectedRowIndex],
           user: this.$store.getters.username,
           date: date,
-          sampleID: this.$route.params.id,
+          sampleID: sampleID,
           filters: f},
           {
             withCredentials: true,
@@ -301,9 +305,10 @@ export default {
   },
   computed: {
     ...mapGetters(["filters"]),
+ 
   },
   mounted() {
-
+    
     
   },
 };
