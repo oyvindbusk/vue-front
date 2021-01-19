@@ -3,7 +3,6 @@
     <hr />
     <h1>Variants:</h1>
     <p>--</p>
-    {{sessioncomments}}
     <p>--</p>
     <p>Show all variants and filters</p>
     <b-container fluid>
@@ -63,7 +62,7 @@ export default {
   computed: {
     // Two way data binding between parent and child component
     
-    sessioncomments: {
+    sessioncomment: {
       get() {
         return this.$store.getters.sessioncomment;
       }
