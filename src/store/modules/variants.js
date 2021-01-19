@@ -28,7 +28,7 @@ const actions = {
 					variants[index]['inheritance'] = '';
 				});
 				commit('SET_STORE', Object.values(variants));
-				commit('SET_STORE_SESSION_COMMENT', sessioncomment);
+				commit('SET_STORE_SESSION_COMMENT', String(sessioncomment));
 			});
 		} else {
 			commit('SET_STORE', Object.values({}));

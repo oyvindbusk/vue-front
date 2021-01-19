@@ -2,8 +2,7 @@
   <div>
     <hr />
     <h1>Variants:</h1>
-    <p>--</p>
-    <p>--</p>
+  
     <p>Show all variants and filters</p>
     <b-container fluid>
       <b-row>
@@ -13,7 +12,7 @@
           >
         </b-col>
         <b-col sm="10">
-          <b-form-textarea
+          <b-form-textarea v-if="this.$store.getters.sessioncomment"
             id="textarea-small"
             v-model="sample_comment"
             size="sm"
@@ -62,11 +61,7 @@ export default {
   computed: {
     // Two way data binding between parent and child component
     
-    sessioncomment: {
-      get() {
-        return this.$store.getters.sessioncomment;
-      }
-    },
+ 
     variants: {
       get() {
         return this.$store.getters.variants;
@@ -105,7 +100,6 @@ export default {
     },
     setChanged() {
       this.variants[this.selectedRowIndex].changed = true;
-      console.log("test")
     },
   },
 };
