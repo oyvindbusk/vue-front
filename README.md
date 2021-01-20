@@ -55,6 +55,7 @@ npm run serve
 ./vb_tool --initannotdb
 ./vb_tool -v=testfiles/7_50.gnomAD.clinvar.snpEff.phenotype.vcf --samples --sample_id=7_50 --phenotypes --snpeff --clinvar --gnomad --bam=./testfiles/bams/7_50_recal_subset.bam --vcf=./testfiles/7_50.gnomAD.clinvar.snpEff.phenotype.vcf
 ./vb_tool -v=testfiles/8_50.gnomAD.clinvar.snpEff.phenotype.vcf --samples --sample_id=8_50 --phenotypes --snpeff --clinvar --gnomad --bam=./testfiles/bams/8_50_recal_subset.bam --vcf=./testfiles/8_50.gnomAD.clinvar.snpEff.phenotype.vcf
+./vb_tool -v=testfiles/10_50_HGMD.vcf --samples --sample_id=10_50 --hgmd --phenotypes --snpeff --clinvar --gnomad --bam=./testfiles/bams/9_50_recal_subset.bam --vcf=./testfiles/10_50_HGMD.vcf
 ```
 # Start server:
 ```sh

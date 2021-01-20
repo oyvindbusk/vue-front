@@ -1,8 +1,8 @@
 let config;
 
 config = {
-	//$backend_url: 'http://localhost:5000',
-	$backend_url: 'http://172.16.0.3:5000',
+	$backend_url: 'http://localhost:5000',
+	//$backend_url: 'http://172.16.0.3:5000',
 	$signout_url: function() {
 		return this.$backend_url + '/newlogout';
 	},
@@ -189,13 +189,13 @@ config = {
 			type: 'int'
 		},
 		{
-			key: 'mastercomment',
+			key: 'masterComment',
 			label: 'mastercomment',
 			sortable: true,
 			type: 'string'
 		},
 		{
-			key: 'masterclass',
+			key: 'masterClass',
 			label: 'masterclass',
 			sortable: true,
 			type: 'string'

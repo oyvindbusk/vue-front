@@ -1,15 +1,20 @@
 <template>
     <div>
+
+
+
        <h1>Variants:</h1>
         <p>Show all variants and filters - across all samples</p>
         <filter-component />
         <hr>
         <button v-if="loading" @click="loadAll" type="button" class="btn btn-primary">Load variants</button>
         <variant-table v-if="!loading" :variants.sync="variants" :loading="loading" :fields="fields" />
-
-
+    
 
     </div>
+
+
+
 </template>
 
 <script>
@@ -40,8 +45,10 @@ export default {
         loadAll: function () {
             this.$store.dispatch("initVariantStore" , '*');
             return this.$store.getters.variants;
-            
-        }
+        },
+        
+        
+    
         
       
   

@@ -1,5 +1,6 @@
 <template>
-{{sessioncomment}}
+<div id="app" class="container">
+<div v-if="!loading">
 <b-container fluid>
       <b-row>
         <b-col sm="2">
@@ -8,16 +9,18 @@
           >
         </b-col>
         <b-col sm="10">
-          <b-form-textarea v-if="this.$store.getters.sessioncomment"
+          <b-form-textarea
             id="textarea-small"
-            v-model="sample_comment"
+            v-model="sessioncomment"
+            @keyup="$emit('update:sessioncomment', sessioncomment)"
             size="sm"
             placeholder="Comment here: "
-            @blur="setChanged()"
           ></b-form-textarea>
         </b-col>
       </b-row>
     </b-container>
+</div>
+    </div>
 </template>
 
 <script>
@@ -26,6 +29,7 @@ export default {
 
 
     name: "sessioncomm-component",
+    props: ["loading", "sessioncomment"],
     data() {
       return {
         sample_comment: ""

@@ -7,7 +7,9 @@
     
     
     <sess-comm-component :sessioncomment.sync="sessioncomment" :loading="loading" />
-    
+      <button @click="signOff" type="button" class="btn btn-secondary">
+     Sign off sample
+    </button>
     
     <hr />
     <filter-component />
@@ -90,6 +92,10 @@ export default {
     };
   },
   methods: {
+    signOff: function(){
+      console.log("signoff")
+      // Should send a post to fill in sessions.signoffdate
+    },
     routeReport: function () {
       this.$router.push({ name: "Report" });
     },
