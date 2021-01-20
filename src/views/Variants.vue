@@ -4,24 +4,11 @@
     <h1>Variants:</h1>
   
     <p>Show all variants and filters</p>
-    <b-container fluid>
-      <b-row>
-        <b-col sm="2">
-          <label for="textarea-small"
-            >Sample comment for sample {{ $route.params.id }}:</label
-          >
-        </b-col>
-        <b-col sm="10">
-          <b-form-textarea v-if="this.$store.getters.sessioncomment"
-            id="textarea-small"
-            v-model="sample_comment"
-            size="sm"
-            placeholder="Comment here: "
-            @blur="setChanged()"
-          ></b-form-textarea>
-        </b-col>
-      </b-row>
-    </b-container>
+    
+    
+    <sess-comm-component :sessioncomment.sync="sessioncomment" :loading="loading" />
+    
+    
     <hr />
     <filter-component />
 
@@ -45,6 +32,7 @@
 import FilterComponent from "../components/FilterComponent.vue";
 import VariantTable from "../components/VariantTable";
 import IgvComponent from "../components/IgvComponent";
+import SessCommComponent from "../components/SessioncommComponent";
 
 import { config } from "../config.js";
 
@@ -56,11 +44,19 @@ export default {
     FilterComponent,
     VariantTable,
     IgvComponent,
+    SessCommComponent,
     
   },
   computed: {
     // Two way data binding between parent and child component
-    
+    sessioncomment: {
+      get() {
+        return this.$store.getters.sessioncomment;
+      },
+      set(value) {
+        this.$store.commit("SET_STORE_SESSION_COMMENT", value);
+      }
+    },
  
     variants: {
       get() {
@@ -89,7 +85,6 @@ export default {
   data() {
     return {
       fields: config.vartablefields,
-      sample_comment: "",
       loading: true,
       selecteditems: {}
     };
